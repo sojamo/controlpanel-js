@@ -34,18 +34,19 @@ class ControlPanel {
 
 
   init() {
-    const me = this;
+    const me    = this;
     const build = this.builder;
     const wheel = () => {return "onwheel" in document ? "wheel" : "mousewheel"; };
-
+    const root  = build.init();
 
     /* global events */
     this.addEventListener(document, 'mousemove', (ev) => { this.dragTarget !== undefined ? this.drag(ev) : console.log("moving mouse"); });
     this.addEventListener(document, 'mouseup', (ev) => { this.stopDrag(); });
     this.addEventListener(window, 'resize', () => {} );
+    /* TODO add touch events for mobile devices */
+
 
     /* initialize panel */
-    const root = build.init();
     document.body.appendChild(root);
     this.addEventListener(root, wheel(), (ev) => { ev.preventDefault()});
 
@@ -60,7 +61,7 @@ class ControlPanel {
       .parent(root)
       .build();
 
-
+    /* TODO building the slider should be moved into Builder.js b*/
     const slider = document.createElementNS(this.svgns, 'g');
     slider.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#g1")
     slider.setAttribute('style', 'fill: rgba(0,190,180, 1.0)');
@@ -98,6 +99,8 @@ class ControlPanel {
     slider.appendChild(g1);
     slider.appendChild(g2);
 
+
+    /* TODO a list of default functions should be available in another file e.g. Events.js */
     slider.drag = (ev) => {
       var val = Common.constrainValue(g1.width.baseVal.value + ev.movementX,0,200)
       g1.setAttribute('width', val);
