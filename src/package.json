@@ -1,0 +1,32 @@
+{
+  "name": "controlpanel-js",
+  "version": "0.1.1",
+  "description": "a gui for p5js",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sojamo/controlpanel-js.git"
+  },
+  "keywords": [
+    "gui",
+    "javascript",
+    "p5js"
+  ],
+  "author": "Andreas Schlegel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sojamo/controlpanel-js/issues"
+  },
+  "homepage": "https://github.com/sojamo/controlpanel-js#readme"
+}
