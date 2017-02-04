@@ -4,14 +4,13 @@ import Builder from './Builder.js'
 class ControlPanel {
 
   constructor(theApp) {
-
     this.app = theApp;
     this.svgns = 'http://www.w3.org/2000/svg';
     this.dragTarget = undefined;
     this.builder = new Builder(this);
     this.params = {
       font: {
-        size: 12
+        size:     12
       },
       color: {
         bg:      'rgba(0,45,90,1.0)',
@@ -20,7 +19,6 @@ class ControlPanel {
         txt:     'rgba(255,255,255,1.0)'
       }
     };
-
     this.init();
   }
 
@@ -52,18 +50,18 @@ class ControlPanel {
     this.addEventListener(root, wheel(), (ev) => { ev.preventDefault()});
 
 
-    var fn1 = (ev) => { console.log(ev); this.app['a'] = 300; };
+    const fn1 = (ev) => { console.log(ev); this.app['a'] = 300; };
 
-    var button = build.create('button')
-              .attr({width:80, height:30, transform:'translate(30,40) rotate(0)'})
-              .event({'click': fn1 })
-              .event({'mouseenter': () => {button.bg.setAttribute('style',`fill: ${this.params.color.active}`)}})
-              .event({'mouseleave': () => {button.bg.setAttribute('style',`fill: ${this.params.color.fg}`)}})
-              .parent(root)
-              .build();
+    const button = build.create('button')
+      .attr({width:80, height:30, transform:'translate(30,40) rotate(0)'})
+      .event({'click': fn1 })
+      .event({'mouseenter': () => {button.bg.setAttribute('style',`fill: ${this.params.color.active}`)}})
+      .event({'mouseleave': () => {button.bg.setAttribute('style',`fill: ${this.params.color.fg}`)}})
+      .parent(root)
+      .build();
 
 
-    var slider = document.createElementNS(this.svgns, 'g');
+    const slider = document.createElementNS(this.svgns, 'g');
     slider.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#g1")
     slider.setAttribute('style', 'fill: rgba(0,190,180, 1.0)');
     slider.setAttribute('width', 200);
@@ -140,17 +138,11 @@ class ControlPanel {
   }
 
 
-  stopDrag() {
-    this.dragTarget = undefined;
-  }
+  stopDrag() { this.dragTarget = undefined; }
 
-  drag(ev) {
-    this.dragTarget(ev);
-  }
+  drag(ev) { this.dragTarget(ev); }
 
-  startDrag(target) {
-    this.dragTarget = target;
-  }
+  startDrag(target) { this.dragTarget = target; }
 
   addEventListener(element, type, callback) {
     if (element.addEventListener) {
