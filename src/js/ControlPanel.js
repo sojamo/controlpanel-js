@@ -100,7 +100,7 @@ class ControlPanel {
     slider.appendChild(g2);
 
 
-    /* TODO a list of default functions should be available in another file e.g. Events.js */
+    /* TODO a list of default functions should be implemented in another file e.g. Events.js */
     slider.drag = (ev) => {
       var val = Common.constrainValue(g1.width.baseVal.value + ev.movementX,0,200)
       g1.setAttribute('width', val);

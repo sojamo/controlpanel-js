@@ -73,7 +73,7 @@ const getTemplateFor = {
 
 /**
   * @desc helper function to standardize creating svg elements
-  * @param {String} t  the svg type
+  * @param {String} t the svg type
   * @returns {Object} svg element
   */
 const createElement = (t) => { return document.createElementNS(Builder.svgns(), t); }
@@ -83,7 +83,7 @@ const createElement = (t) => { return document.createElementNS(Builder.svgns(), 
   * @desc helper function to set attributes for an svg element
   * @param {Object} e  svg element
   * @param {Object} o  object with attributes
-  * @returns {Object} e svg element with attributes added
+  * @returns {Object} svg element with attributes added
   */
 const setAttributesFor = (e,o) => {
     for(let key of Object.keys(o)) {
@@ -96,7 +96,7 @@ const setAttributesFor = (e,o) => {
 /**
   * @desc helper to create a svg rectangle
   * @param {Object} theParams  the parameters to be used to style the rectangle
-  * @returns {Object} _ svg rect with attributes added
+  * @returns {Object} svg rect with attributes added
   */
 const rect = (theParams) => {
   let attr = {
@@ -109,10 +109,11 @@ const rect = (theParams) => {
   return setAttributesFor(createElement('rect'), attr);
 }
 
+
 /**
   * @desc helper to create a svg text element
   * @param {Object} theParams  the parameters to be used to style a text label
-  * @returns {Object} _ svg text with attributes added
+  * @returns {Object} svg text with attributes added
   */
 const label = (theParams) => {
   const attr = {
@@ -128,8 +129,10 @@ const label = (theParams) => {
   return setAttributesFor(label, attr);
 }
 
+
 /* TODO implement circle */
 const circle = (theParams) => {}
+
 
 /* TODO implement chart */
 const chart = (theParams) => {
@@ -138,11 +141,13 @@ const chart = (theParams) => {
   return chart;
 }
 
+
 /**
   * @class
   * @classdesc
   */
 class Controller {
+
 
   /**
     * @constructor
@@ -156,12 +161,14 @@ class Controller {
       this.type = theType;
     }
 
+
     attr(theAttr) {
       for (let key of Object.keys(theAttr)) {
         this.elem.setAttribute(key, theAttr[key]);
       }
       return this;
     }
+
 
     event(theEvents) {
       for(let key of Object.keys(theEvents)) {
@@ -170,7 +177,9 @@ class Controller {
       return this;
     }
 
+
     parent(theParent) { theParent.appendChild(this.elem); return this; }
+
 
     build() { return getTemplateFor[this.type](this.elem); }
 
