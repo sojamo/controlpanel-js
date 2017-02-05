@@ -1,7 +1,12 @@
 module.exports = {
-  entry: './js/main.js',
+  entry: {
+    'dist/controlpanel':'./js/main.js',
+    'test/libraries/controlpanel':'./js/main.js'
+  }, /* './js/main.js', */
   output: {
-    filename: '../dist/controlpanel.js',
+    path: '../',
+    filename: '[name].js'
+    /* filename: '../dist/controlpanel.js', */
   },
   module: {
     loaders: [
