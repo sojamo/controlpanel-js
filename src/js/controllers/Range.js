@@ -1,7 +1,9 @@
 import Event                         from '../Events.js'
 import Common                        from '../Common.js'
+import Controller                    from '../Controller.js'
 import {createRect, createLabel}     from '../Builder.js'
 import {updateElementFor}            from '../Builder.js'
+
 class Range {
 
   /**
@@ -46,19 +48,24 @@ class Range {
     const w0 = v1 - v0;
     const valueMin = value.min.toFixed(2);
     const valueMax = value.max.toFixed(2);
-    const c0 = hover ? 'range active': 'range fg';
+    const c0 = hover ? Range.active: Range.hover;
     const spacing = 4;
-    updateElementFor(theController, 'bg', createRect, {width, height, class: 'range bg'});
+    updateElementFor(theController, 'bg', createRect, {width, height, class: Range.normal});
     updateElementFor(theController, 'fg', createRect, {x: v0, width: w0, height, class: c0});
-    updateElementFor(theController, 'min', createRect, {x: v0-handleWidth, width: handleWidth, height, class: 'range fg'});
-    updateElementFor(theController, 'max', createRect, {x: v1, width: handleWidth, height, class: 'range fg'});
-    updateElementFor(theController, 'label', createLabel, {x: width + spacing, y: height/2, 'text-anchor': 'start', class: 'range label', text: label});
-    updateElementFor(theController, 'valueMin', createLabel, {x: spacing, y: height/2, 'text-anchor': 'start', class: 'range label', text: valueMin});
-    updateElementFor(theController, 'valueMax', createLabel, {x: width-spacing, y: height/2, 'text-anchor': 'end', class: 'range label', text: valueMax});
-    updateElementFor(theController, 'area', createRect, {width, height, class: 'area'});
+    updateElementFor(theController, 'min', createRect, {x: v0-handleWidth, width: handleWidth, height, class: Range.hover});
+    updateElementFor(theController, 'max', createRect, {x: v1, width: handleWidth, height, class: Range.hover});
+    updateElementFor(theController, 'label', createLabel, {x: width + spacing, y: height/2, 'text-anchor': 'start', class: Range.label, text: label});
+    updateElementFor(theController, 'valueMin', createLabel, {x: spacing, y: height/2, 'text-anchor': 'start', class: Range.label, text: valueMin});
+    updateElementFor(theController, 'valueMax', createLabel, {x: width-spacing, y: height/2, 'text-anchor': 'end', class: Range.label, text: valueMax});
+    updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;
   }
 
 }
+
+Range.normal  = 'range bg';
+Range.hover   = 'range fg';
+Range.active  = 'range active';
+Range.label   = 'range label';
 
 export default Range;

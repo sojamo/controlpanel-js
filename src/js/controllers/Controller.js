@@ -25,4 +25,6 @@
  /* define view */
 // updateElementFor(theController, theName, theFunctionToCreateSVG, theParams )
 
+Controller.area = 'area';
+
 export default Controller;

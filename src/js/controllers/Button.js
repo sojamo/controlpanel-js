@@ -1,7 +1,8 @@
-import Event                                 from '../Events.js'
-import Common                                from '../Common.js'
-import {createRect, createLabel}             from '../Builder.js'
-import {updateElementFor, setAttributesFor}  from '../Builder.js'
+import Event                                  from '../Events.js'
+import Common                                 from '../Common.js'
+import Controller                             from '../Controller.js'
+import {createRect, createLabel}              from '../Builder.js'
+import {updateElementFor, setAttributesFor}   from '../Builder.js'
 
 
 class Button {
@@ -51,7 +52,7 @@ class Button {
       default:
         updateElementFor(theController, 'label', createLabel, {x: w0, y: h0, textAnchor: 'middle', class: Button.label, text: label});
     }
-    updateElementFor(theController, 'area', createRect, {width, height, class: 'area'});
+    updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;
   }
 

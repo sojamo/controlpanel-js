@@ -1,5 +1,6 @@
 import Event                       from '../Events.js'
 import Common                      from '../Common.js'
+import Controller                  from '../Controller.js'
 import Builder                     from '../Builder.js'
 import {createRect, createLabel}   from '../Builder.js'
 import {updateElementFor}          from '../Builder.js'
@@ -51,7 +52,7 @@ class Slider {
       updateElementFor(theController, 'fg', createRect, {width: v1, height, class: c0});
       updateElementFor(theController, 'label', createLabel, {x: width + spacing, y: height/2, 'text-anchor': 'start', class: Slider.label, text: label});
       updateElementFor(theController, 'value', createLabel, {x: spacing, y: height/2, 'text-anchor': 'start', class: Slider.label, text: v2});
-      updateElementFor(theController, 'area', createRect, {width, height, class: 'area'});
+      updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
       return theController;
   }
 
@@ -62,7 +63,5 @@ Slider.hover   = 'slider fg';
 Slider.active  = 'slider active';
 Slider.label   = 'slider label';
 Slider.icon    = 'slider icon';
-
-
 
 export default Slider;

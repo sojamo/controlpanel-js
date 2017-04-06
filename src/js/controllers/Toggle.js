@@ -1,5 +1,6 @@
 import Event                                     from '../Events.js'
 import Common                                    from '../Common.js'
+import Controller                                from '../Controller.js'
 import {createRect, createLabel, createCircle}   from '../Builder.js'
 import {updateElementFor}                        from '../Builder.js'
 
@@ -70,7 +71,7 @@ class Toggle {
       }
     }
     if(isLabel) updateElementFor(theController, 'label', createLabel, {x: width+4, y: height/2, class: Toggle.label, text: label});
-    updateElementFor(theController, 'area', createRect, {width, height, class: 'area'});
+    updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;
   }
 }

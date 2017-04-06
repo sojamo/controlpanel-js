@@ -2,21 +2,22 @@
 import Event                                        from '../Events.js'
 import Common                                       from '../Common.js'
 import Controller                                   from '../Controller.js'
-import {createRect, createLabel, createChart}       from '../Builder.js'
+import {createRect, createLabel, createCircle}      from '../Builder.js'
 import {updateElementFor, setAttributesFor}         from '../Builder.js'
 
-class Chart {
+
+class Knob {
 
   static create(theTemplate, theId, theParams) {
     /* 1. configure default parameters first */
-    const {value=[], x=0, y=0, width=100, height=50} = theParams;
+    const {value=[], x=0, y=0, radius=20} = theParams;
 
     /* 2. create a new controller of type slider */
-    const controller = theTemplate.createControllerFor(theId, 'chart');
+    const controller = theTemplate.createControllerFor(theId, 'knob');
 
     /* 3. now set the state for the slider */
     controller
-      .setState(Common.merge({value, width, height, x, y, r}, theParams))
+      .setState(Common.merge({value, radius, x, y, r}, theParams))
       .setParent(theTemplate.root())
       .build();
 
@@ -25,12 +26,17 @@ class Chart {
   }
 
   static update(theController, theParams) {
-    const {width, height, label, option, value} = theParams;
-    updateElementFor(theController, 'bg', createRect, {width, height, class: 'chart bg', rx, ry});
-    updateElementFor(theController, 'chart', createChart, {width, height, value});
-    updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
+    const {radius, label, value} = theParams;
+    updateElementFor(theController, 'bg', createCircle, {radius, class: Knob.normal, rx, ry});
+    updateElementFor(theController, 'fg', createArc, {radius, value, class: Knob.hover});
+    updateElementFor(theController, 'area', createRect, {width: radius*2, height: radius*2, class: Controller.area});
     return theController;
   }
 }
+
+Knob.normal  = 'knob bg';
+Knob.hover   = 'knob fg';
+Knob.active  = 'knob active';
+Knob.label   = 'knob label';
 
 export default Chart;
