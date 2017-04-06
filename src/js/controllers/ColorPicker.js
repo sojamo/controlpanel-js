@@ -1,5 +1,6 @@
 import Event                                      from '../Events.js'
 import Common                                     from '../Common.js'
+import Controller                                 from '../Controller.js'
 import {createRect, createLabel, createElement}   from '../Builder.js'
 import {updateElementFor, setAttributesFor}       from '../Builder.js'
 import {addEventListener}                         from '../Events.js'

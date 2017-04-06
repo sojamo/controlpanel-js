@@ -1,5 +1,6 @@
 import Event                                  from '../Events.js'
 import Common                                 from '../Common.js'
+import Controller                             from '../Controller.js'
 import {createRect, createLabel, createInput} from '../Builder.js'
 import {updateElementFor}                     from '../Builder.js'
 
@@ -44,15 +45,20 @@ class TextField {
    */
   static update(theController, theParams) {
     const {width, height, label:text, hover, rx=0, ry=0} = theParams;
-    const c0 = hover ? 'textField active': 'textField fg';
-    updateElementFor(theController, 'bg', createRect, {width, height, class: 'textField bg', rx, ry});
+    const c0 = hover ? TextField.active: TextField.hover;
+    updateElementFor(theController, 'bg', createRect, {width, height, class: TextField.normal, rx, ry});
     updateElementFor(theController, 'baseline', createRect, {width, height: 2, y: height - 2, class: c0, rx, ry});
-    updateElementFor(theController, 'input', createInput, {width, height});
-    updateElementFor(theController, 'label', createLabel, {x: width + 4, y: height/2, textAnchor: 'start', alignmentBaseline: 'central', class: 'label', text});
-    updateElementFor(theController, 'area', createRect, {width, height, class: 'area'});
+    updateElementFor(theController, 'input', createInput, {width, height, class: TextField.label});
+    updateElementFor(theController, 'label', createLabel, {x: width + 4, y: height/2, textAnchor: 'start', alignmentBaseline: 'central', class: TextField.label, text});
+    updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;
   }
 
 }
+
+TextField.normal  = 'textField bg';
+TextField.hover   = 'textField fg';
+TextField.active  = 'textField active';
+TextField.label   = 'textField label';
 
 export default TextField;
