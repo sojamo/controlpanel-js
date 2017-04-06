@@ -1,3 +1,5 @@
 node_modules/
+sketches/
 notes.md
 .DS_Store
+.tern-project

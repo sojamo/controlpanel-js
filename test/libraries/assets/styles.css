@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+
+svg {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+svg.cp5 {
+  transition: 0.2s ease;
+  transition-property: height,width;
+}
+
+svg * {
+  transition: fill 0.25s ease; /*only affects the fill color of an element's style */
+  outline:none;
+  font-size: 12px;
+  font-family: 'Source Sans Pro';
+}
+
+svg.cp5 text.icon {font-family: 'FontAwesome'; fill: rgba(255,255,255,0.9); font-size: 16px; }
+svg text { pointer-events: none; }
+svg.cp5 .controller {}
+svg.cp5 .bg         { fill: rgba(0,64,128,1.0); }
+svg.cp5 .fg         { fill: rgba(0,96,255,1.0); }
+svg.cp5 .active     { fill: rgba(0,160,255,1.0); }
+svg.cp5 .label      { fill: rgba(255,255,255,1.0); }
+svg.cp5 .area       { fill: rgba(0,0,0,0.0); display: hidden;}
+svg.cp5 .area:hover { cursor: pointer; }
+
+svg.cp5 .textField.bg { fill: rgba(0,64,128,0.2); }
+svg.cp5 foreignObject div.single {width:96%; margin:0 2%; height:100%; white-space: nowrap; overflow:hidden;}
+svg.cp5 foreignObject div.single br { display:none; }
+svg.cp5 foreignObject div.single * { display:inline; white-space:nowrap; }
+svg.cp5 foreignObject div.single span {align:center; text-align: center; vertical-align: middle; height:100%; line-height:normal;};
