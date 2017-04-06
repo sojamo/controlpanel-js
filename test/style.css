@@ -6,25 +6,6 @@ html, body { height: 100%; background:rgb(220,220,220); }
 
 h1 {font-size: 20px; margin-bottom:20px; }
 
-
-svg { /* disable text-select for svg objects */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-svg#controlpanel {
-  transition: 0.2s ease;
-  transition-property: height,width;
-}
-
-svg * {
-  transition: fill 0.2s ease; /* only affects the fill color of an element's style */
-}
-
 .context {
   margin:100px;
 }
