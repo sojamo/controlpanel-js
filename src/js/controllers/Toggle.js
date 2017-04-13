@@ -24,9 +24,9 @@ class Toggle {
     /* 3. now set the state for the slider */
     controller
       .setState(Common.merge({value, width, height, x, y, r}, theParams))
-      .addEventFor(Event.click, {call: {fn: (c) => {c.change({value: !controller.getValue()})}}})
-      .addEventFor(Event.focus, {call: {fn: (c) => {c.change({focus: true})}}})
-      .addEventFor(Event.blur, {call: {fn: (c) => {c.change({focus: false})}}})
+      .addEventFor(Event.click, {call: {fn: (e, c, p) => {c.change({value: !controller.getValue()})}}})
+      .addEventFor(Event.focus, {call: {fn: (e, c, p) => {c.change({focus: true})}}})
+      .addEventFor(Event.blur, {call: {fn: (e, c, p) => {c.change({focus: false})}}})
       .setParent(theTemplate.root())
       .build();
 

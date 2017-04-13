@@ -62,14 +62,6 @@ class Controller {
     getState() {
       return this.state;
     }
-    /**
-     * changes the state of a controller and rebuilds it.
-     * @param  {Object} theParams the parameters to be changes
-     */
-    change(theParams) {
-      this.setState(theParams);
-      this.build();
-    }
 
     /**
       * @desc

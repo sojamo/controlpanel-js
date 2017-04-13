@@ -161,7 +161,7 @@ export const addEventListener = (theElement, theType, theCallback, theFlag=false
 setEvent('call', (theEventHandler, theController, theParams) => {
   const {fn} = theParams;
   console.log('call', theParams);
-  fn(theController, theParams);
+  fn(theEventHandler, theController, theParams);
 });
 
 /**
@@ -209,7 +209,7 @@ setEvent('sliderDown', (theEventHandler, theController, theParams) => {
   const pointer = event.clientX - element.area.getBoundingClientRect().left;
   const v0 = Common.mapValue(pointer, 0, width, min, max);
   const value = Common.constrainValue(v0, min, max);
-  theController.change({value});
+  theEventHandler.base().change(theController.id, {value});
 });
 
 /**
@@ -221,7 +221,7 @@ setEvent('sliderDrag', (theEventHandler, theController, theParams) => {
   const {min, max, width, value: val} = theController.state;
   const v0 = val + Common.mapValue(inputValue, 0, width, 0, max - min);
   const value = Common.constrainValue(v0, min, max);
-  theController.change({value});
+  theEventHandler.base().change(theController.id, {value});
 });
 
 /**
@@ -262,17 +262,17 @@ setEvent('rangeDrag', (theEventHandler, theController, theParams) => {
     case 'scroll': {
         const min = Common.constrainValue(val.min + dist, minValue, maxValue - range);
         const max = min + range;
-        theController.change({value: {min, max}});
+        theEventHandler.base().change(theController.id, {value: {min, max}});
       }
     break;
     case 'left': {
       const min = Common.constrainValue(val.min + dist, minValue, val.max);
-      theController.change({value: {min}});
+      theEventHandler.base().change(theController.id, {value: {min}});
     }
     break;
     case 'right': {
       const max = Common.constrainValue(val.max + dist, val.min, maxValue);
-      theController.change({value: {max}});
+      theEventHandler.base().change(theController.id, {value: {max}});
     }
     break;
   }
@@ -285,7 +285,7 @@ setEvent('rangeDrag', (theEventHandler, theController, theParams) => {
  */
 setEvent('hover', (theEventHandler, theController, theParams) => {
   const {is} = theParams;
-  theController.change({hover: is});
+  theEventHandler.base().change(theController.id, {hover: is});
 });
 
 

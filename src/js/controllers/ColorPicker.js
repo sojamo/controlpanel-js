@@ -41,7 +41,7 @@ class ColorPicker {
    * @param  {[type]} theParams     [description]
    * @return [type]                 [description]
    */
-  static togglePicker(theController) {
+  static togglePicker(theEventHandler, theController) {
 
     const k0 = 'picker';
 
@@ -76,21 +76,21 @@ class ColorPicker {
 
       /* on click, change color */
       addEventListener(canvas, Event.click, event => {
-        ColorPicker.changeColorFor(theController, canvas, Common.merge(params, {sx: event.layerX, sy: event.layerY}));
+        ColorPicker.changeColorFor(theController, theEventHandler, canvas, Common.merge(params, {sx: event.layerX, sy: event.layerY}));
       });
 
       /* when dragging the mouse inside the foreignObject, update color */
       addEventListener(canvas, Event.mouseMove, event => {
         if(event.buttons !== 0) {
-          ColorPicker.changeColorFor(theController, canvas, Common.merge(params, {sx: event.layerX, sy: event.layerY}));
+          ColorPicker.changeColorFor(theController, theEventHandler, canvas, Common.merge(params, {sx: event.layerX, sy: event.layerY}));
         }
       });
 
       /* an outside click will close the foreignObject */
-      addEventListener(f0, Event.blur, event => { ColorPicker.togglePicker(theController); });
+      addEventListener(f0, Event.blur, event => { ColorPicker.togglePicker(theEventHandler, theController); });
 
       /* add the foreignObject to the ColorPicker object and set focus */
-      theController.change({[k0]: f0});
+      theEventHandler.base().change(theController.id, {[k0]: f0});
       root.appendChild(f0);
       f0.focus();
 
@@ -110,7 +110,7 @@ class ColorPicker {
    * @param  {[type]} theParams     [description]
    * @return [type]                 [description]
    */
-  static changeColorFor(theController, theElement, theParams) {
+  static changeColorFor(theController, theEventHandler, theElement, theParams) {
 
     /* render the color spectrum*/
     const hue = theController.getStateFor('hue');
@@ -122,12 +122,12 @@ class ColorPicker {
     if(theParams.sx < theParams.spacing) {
        /* select a new hue value */
       ColorPicker.renderColorInto(theElement, Common.merge(theParams, {hue: selectedColor}));
-      theController.change({hue: selectedColor});
+      theEventHandler.base().change(theController.id, {hue: selectedColor});
     } else {
       /* otherwise change the brightness/saturation based on the color selected */
       const style = `fill: rgba(${selectedColor[0]}, ${selectedColor[1]}, ${selectedColor[2]}, 1.0)`;
       setAttributesFor(theController.getElement().childNodes[0], {style});
-      theController.change({value: selectedColor});
+      theEventHandler.base().change(theController.id, {value: selectedColor});
     }
   };
 

@@ -83,7 +83,15 @@ class ControlPanel {
    */
   change(theId, theParams) {
     const controller = this.controllers[theId]; // FIXME: could be undefined
-    controller.change(theParams);
+    controller.setState(theParams);
+    controller.build();
+
+    const {value=undefined} = theParams;
+
+    if(value !== undefined) {
+      this.app[controller.id] = controller.getValue();
+      this.app.controlEvent(Common.merge(theParams, {id: controller.id}));
+    }
     return this;
   }
 

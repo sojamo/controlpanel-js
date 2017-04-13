@@ -24,9 +24,9 @@ class Button {
     /* 3. initialize the controller's state and events, also assign it's parent */
     controller
       .setState(Common.merge({value, width, height, x, y, r}, theParams))
-      .addEventFor(Event.click, {call: {fn: (c) => {console.log('hello click', c);}}})
-      .addEventFor(Event.mouseDown, {call: {fn: (c) => {setAttributesFor(c.getElement('bg'), {class: Button.active});}}})
-      .addEventFor(Event.mouseUp, {call: {fn: (c) => {setAttributesFor(c.getElement('bg'), {class: Button.hover});}}})
+      .addEventFor(Event.click, {call: {fn: (e, c, p) => {console.log('hello click', c);}}})
+      .addEventFor(Event.mouseDown, {call: {fn: (e, c, p) => {setAttributesFor(c.getElement('bg'), {class: Button.active});}}})
+      .addEventFor(Event.mouseUp, {call: {fn: (e, c, p) => {setAttributesFor(c.getElement('bg'), {class: Button.hover});}}})
       .addEventFor(Event.mouseEnter, {hover: {is: true}})
       .addEventFor(Event.mouseLeave, {hover: {is: false}})
       .setParent(theTemplate.root())
