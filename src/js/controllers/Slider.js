@@ -4,6 +4,7 @@ import Controller                  from '../Controller.js'
 import Builder                     from '../Builder.js'
 import {createRect, createLabel}   from '../Builder.js'
 import {updateElementFor}          from '../Builder.js'
+
 class Slider {
 
   /**

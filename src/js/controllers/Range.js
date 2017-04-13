@@ -55,8 +55,8 @@ class Range {
     updateElementFor(theController, 'min', createRect, {x: v0-handleWidth, width: handleWidth, height, class: Range.hover});
     updateElementFor(theController, 'max', createRect, {x: v1, width: handleWidth, height, class: Range.hover});
     updateElementFor(theController, 'label', createLabel, {x: width + spacing, y: height/2, 'text-anchor': 'start', class: Range.label, text: label});
-    updateElementFor(theController, 'valueMin', createLabel, {x: spacing, y: height/2, 'text-anchor': 'start', class: Range.label, text: valueMin});
-    updateElementFor(theController, 'valueMax', createLabel, {x: width-spacing, y: height/2, 'text-anchor': 'end', class: Range.label, text: valueMax});
+    updateElementFor(theController, 'labelMin', createLabel, {x: spacing, y: height/2, 'text-anchor': 'start', class: Range.label, text: valueMin});
+    updateElementFor(theController, 'labelMax', createLabel, {x: width-spacing, y: height/2, 'text-anchor': 'end', class: Range.label, text: valueMax});
     updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;
   }

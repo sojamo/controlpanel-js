@@ -30,9 +30,10 @@ class Builder extends AHelper {
     * @returns {Object} root element
     */
   init(theParams) {
-    const {top=0, left=0, name='?', position='absolute', background='rgba(0,0,0,0.25)'} = theParams;
+    // const {top=0, left=0, name='?', position='absolute', background='rgba(0,0,0,0.25)'} = theParams;
+    const {name='?', background='rgba(0,0,0,0.2)'} = theParams;
 
-    const defaultAttributes = {id: 'cp5-'+name, class: 'cp5', style: {top, left, position, background}};
+    const defaultAttributes = {id: 'cp5-'+name, class: 'cp5', style: {background}};
 
     const root = setAttributesFor(createElement('svg'), Common.merge(defaultAttributes, theParams));
 
@@ -99,8 +100,6 @@ export const updateElementFor = (theController, theIndex, theFn, theParams) => {
 
   /* then make changes to the controller's attributes where necessary */
   setAttributesFor(theController.getElement(theIndex), theParams);
-
-  console.log()
 }
 
 /**
@@ -184,6 +183,10 @@ export const createInput = theParams => {
 
 /* TODO implement triangle */
 export const createTriangle = theParams => {
+  const {points=[0,0, 100,0, 50,100]} = theParams;
+  const defaultAttributes = {points};
+  const shape = setAttributesFor(createElement('polygon'), Common.merge(defaultAttributes, theParams));
+  return shape;
 }
 
 /* TODO implement chart */

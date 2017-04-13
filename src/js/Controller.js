@@ -36,7 +36,7 @@ class Controller {
       * @param {String} theIndex
       * @returns {Object} an svg element
       */
-    getElement(theIndex) {return theIndex === undefined ? this.element:this.element[theIndex];}
+    getElement(theIndex) {return theIndex === undefined ? this.element: this.element[theIndex];}
 
     /**
      *
@@ -59,6 +59,9 @@ class Controller {
       return this.state[theIndex];
     }
 
+    getState() {
+      return this.state;
+    }
     /**
      * changes the state of a controller and rebuilds it.
      * @param  {Object} theParams the parameters to be changes

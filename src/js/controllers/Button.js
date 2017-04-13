@@ -15,11 +15,13 @@ class Button {
    * @return [type]               [description]
    */
   static create(theTemplate, theId, theParams) {
-    /* set default parameters*/
-    const {value=1, x=0, y=0, r=0, width=100, height=20} = theParams;
-    /* create a Controller object */
+    /* 1. set default parameters*/
+    const { value=1, x=0, y=0, r=0, width=100, height=20} = theParams;
+
+    /* 2. create a Controller object */
     const controller = theTemplate.createControllerFor(theId, 'button');
-    /* initialize the controller's state and events, also assign it's parent */
+
+    /* 3. initialize the controller's state and events, also assign it's parent */
     controller
       .setState(Common.merge({value, width, height, x, y, r}, theParams))
       .addEventFor(Event.click, {call: {fn: (c) => {console.log('hello click', c);}}})
@@ -29,7 +31,8 @@ class Button {
       .addEventFor(Event.mouseLeave, {hover: {is: false}})
       .setParent(theTemplate.root())
       .build();
-    /* after building is completed, return the controller */
+
+    /* 4. after building is completed, return the controller */
     return controller;
   }
 
@@ -42,15 +45,15 @@ class Button {
   static update(theController, theParams) {
     const {width, height, label, hover, option, icon, rx=4, ry=4} = theParams;
     const c0 = hover ? Button.hover: Button.normal;
-    const w0 = width/2;
-    const h0 = height/2;
+    const x = width/2;
+    const y = height/2;
     updateElementFor(theController, 'bg', createRect, {width, height, class: c0, rx, ry});
     switch(option) {
       case('icon'):
-        updateElementFor(theController, 'icon', createLabel, {x: w0, y: h0, textAnchor: 'middle', class: Button.icon, text: icon});
-      break;
+        updateElementFor(theController, 'icon', createLabel, {x, y, textAnchor: 'middle', class: Button.icon, text: icon});
+        break;
       default:
-        updateElementFor(theController, 'label', createLabel, {x: w0, y: h0, textAnchor: 'middle', class: Button.label, text: label});
+      updateElementFor(theController, 'label', createLabel, {x, y, textAnchor: 'middle', class: Button.label, text: label});
     }
     updateElementFor(theController, 'area', createRect, {width, height, class: Controller.area});
     return theController;

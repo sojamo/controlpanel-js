@@ -108,6 +108,10 @@ class Event extends AHelper {
     return this;
   }
 
+
+  /* FIXME: EXPERIMENTAL checks all elements for mouse-over when key is pressed,
+   * then finds the most-top one and changes the text of its label.
+   * uses Controller.element.request() to access the Controller assigned to the element. */
   handleKeyEvent(theEventType, theEvent) {
     /* gather all elements that are under the mouse pointer when a key gets pressed */
     const arr = [...document.querySelectorAll( ":hover" )];
@@ -156,6 +160,7 @@ export const addEventListener = (theElement, theType, theCallback, theFlag=false
  */
 setEvent('call', (theEventHandler, theController, theParams) => {
   const {fn} = theParams;
+  console.log('call', theParams);
   fn(theController, theParams);
 });
 

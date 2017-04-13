@@ -1,14 +1,13 @@
 /* ControlPanel */
 
-import Builder                            from './Builder.js'
-import Common                             from './Common.js'
-import Event                              from './Events.js'
-import Observer                           from './Observer.js'
-import Templates                          from './Templates.js'
-import Styles                             from './Styles.js'
-import {addEventListener}                 from './Events.js'
-import {setAttributesFor,createElement}   from './Builder.js'
-
+import Builder                                            from './Builder.js'
+import Common                                             from './Common.js'
+import Event                                              from './Events.js'
+import Observer                                           from './Observer.js'
+import Templates                                          from './Templates.js'
+import Styles                                             from './Styles.js'
+import {addEventListener}                                 from './Events.js'
+import {setAttributesFor,createElement, createTriangle}   from './Builder.js'
 
 /**
   * @classdesc
@@ -19,7 +18,7 @@ class ControlPanel {
     * @constructor
     */
   constructor(theApp, theParams) {
-    const params     = Common.merge({name: '', width: 400, height: 300}, theParams);
+    const params     = Common.merge({name: '', width: 400, height: 300, parent: document.body}, theParams);
 
     this.app         = theApp;
     this.name        = params.name;
@@ -33,8 +32,8 @@ class ControlPanel {
     /* define the root element */
     const root = this.builder.init(params);
 
-    /* initialize the control-panel */
-    document.body.appendChild(root);
+    /* initialize the control-panel and TODO: assign panel to DOM element */
+    document.getElementById('p5-overlay').appendChild(root);
 
     /* setup controller-events */
     this.events.configure(root, this.name);
@@ -44,24 +43,18 @@ class ControlPanel {
 
 
     /* The minimize/maximize Icon TODO: where should this go? */
-    const minimize = setAttributesFor(
-      document.createElementNS('http://www.w3.org/2000/svg', 'circle'),
-      {
-        style: {
-          fill: 'rgba(255,255,255,0.5)'
-        },
-        cx:12,
-        cy:12,
-        r:8
-      });
+    // const minimize = createTriangle({points: '-5,-4, 5,-4, 0,4'});
+    const minimize = createTriangle({points: [-5,-4, 5,-4, 0,4]});
+    setAttributesFor(minimize, {transform: `translate(12,12) rotate(0)`, class: 'menubar'})
     minimize.value = false;
 
     addEventListener(minimize, Event.click, ev => {
       minimize.value = !minimize.value;
-      setAttributesFor(
-        root, {
-        height: minimize.value ? 24 : params.height}
-      );
+      const r = minimize.value ? -90: 0;
+      const height = minimize.value ? 24 : params.height;
+      const width = minimize.value ? 64 : params.width;
+      setAttributesFor(root, { height, width});
+      setAttributesFor(minimize, { transform: `translate(12,12) rotate(${r})`});
     });
 
     root.appendChild(minimize);
