@@ -160,7 +160,6 @@ export const addEventListener = (theElement, theType, theCallback, theFlag=false
  */
 setEvent('call', (theEventHandler, theController, theParams) => {
   const {fn} = theParams;
-  console.log('call', theParams);
   fn(theEventHandler, theController, theParams);
 });
 

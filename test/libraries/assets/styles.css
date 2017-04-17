@@ -22,6 +22,8 @@ svg * {
   font-family: 'Source Sans Pro';
 }
 
+
+
 svg.cp5 text.icon {font-family: 'FontAwesome'; fill: rgba(255,255,255,0.9); font-size: 16px; }
 svg text { pointer-events: none; }
 svg.cp5 .controller {}
@@ -31,6 +33,7 @@ svg.cp5 .active     { fill: rgba(0,160,255,1.0); }
 svg.cp5 .label      { fill: rgba(255,255,255,1.0); }
 svg.cp5 .area       { fill: rgba(0,0,0,0.0); display: hidden;}
 svg.cp5 .area:hover { cursor: pointer; }
+svg.cp5 .menubar { fill: rgba(255,255,255,1.0); }
 
 svg.cp5 .textField.bg { fill: rgba(0,64,128,0.2); }
 svg.cp5 foreignObject div.single {width:96%; margin:0 2%; height:100%; white-space: nowrap; overflow:hidden;}

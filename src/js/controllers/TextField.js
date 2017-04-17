@@ -1,23 +1,23 @@
 import Event                                  from '../Events.js'
 import Common                                 from '../Common.js'
 import Controller                             from '../Controller.js'
-import {createRect, createLabel, createInput} from '../Builder.js'
+import {createRect, createLabel, createInput} from '../Shapes.js'
 import {updateElementFor}                     from '../Builder.js'
 
 class TextField {
 
   /**
    * [create description]
-   * @param  {[type]} theTemplate [description]
+   * @param  {[type]} theBuilder  [description]
    * @param  {[type]} theId       [description]
    * @param  {[type]} theParams   [description]
    * @return [type]               [description]
    */
-  static create(theTemplate, theId, theParams) {
+  static create(theBuilder, theId, theParams) {
     /* set default parameters*/
     const {value=1, x=0, y=0, r=0, width=100, height=20} = theParams;
     /* create a Controller object */
-    const controller = theTemplate.createControllerFor(theId, 'textField');
+    const controller = theBuilder.createControllerFor(theId, this.name);
     /* assign input specific events */
     const input = () => {
       const div = controller.getElement('input').childNodes[0].childNodes[0]; /* FIXME: optimize */
@@ -31,7 +31,7 @@ class TextField {
       .addEventFor(Event.focus, {call: {fn: () => {input().focus();}}})
       .addEventFor(Event.mouseEnter, {hover: {is: true}})
       .addEventFor(Event.mouseLeave, {hover: {is: false}})
-      .setParent(theTemplate.root())
+      .setParent(theBuilder.root())
       .build();
     /* after building is completed, return the controller */
     return controller;

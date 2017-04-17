@@ -1,24 +1,24 @@
 import Event                         from '../Events.js'
 import Common                        from '../Common.js'
 import Controller                    from '../Controller.js'
-import {createRect, createLabel}     from '../Builder.js'
+import {createRect, createLabel}     from '../Shapes.js'
 import {updateElementFor}            from '../Builder.js'
 
 class Range {
 
   /**
    * [create description]
-   * @param  {[type]} theTemplate [description]
+   * @param  {[type]} theBuilder  [description]
    * @param  {[type]} theId       [description]
    * @param  {[type]} theParams   [description]
    * @return [type]               [description]
    */
-  static create(theTemplate, theId, theParams) {
+  static create(theBuilder, theId, theParams) {
     /* 1. configure default parameters first */
     const {value={min:0.25, max:0.75}, min=0, max=1, x=0, y=0, r=0, width=100, height=20, handleWidth=10} = theParams;
 
     /* 2. create a new controller of type slider */
-    const controller = theTemplate.createControllerFor(theId, 'range');
+    const controller = theBuilder.createControllerFor(theId, this.name);
 
     /* 3. now set the state for the range, order matters! see mouseDown.
      * startDrag needs to be called before RangeDown so that dragTarget gets initialized. */
@@ -28,7 +28,7 @@ class Range {
       .addEventFor(Event.mouseDown, {startDrag: {then: 'rangeDrag', get: 'movementX'}, rangeDown: {}})
       .addEventFor(Event.mouseEnter, {hover: {is: true}})
       .addEventFor(Event.mouseLeave, {hover: {is: false}})
-      .setParent(theTemplate.root())
+      .setParent(theBuilder.root())
       .build();
 
     /* 4. finally return the newly created controller */

@@ -2,23 +2,23 @@
 import Event                                        from '../Events.js'
 import Common                                       from '../Common.js'
 import Controller                                   from '../Controller.js'
-import {createRect, createLabel, createCircle}      from '../Builder.js'
+import {createRect, createLabel, createCircle}      from '../Shapes.js'
 import {updateElementFor, setAttributesFor}         from '../Builder.js'
 
 
 class Knob {
 
-  static create(theTemplate, theId, theParams) {
+  static create(theBuilder, theId, theParams) {
     /* 1. configure default parameters first */
     const {value=[], x=0, y=0, radius=20} = theParams;
 
     /* 2. create a new controller of type slider */
-    const controller = theTemplate.createControllerFor(theId, 'knob');
+    const controller = theBuilder.createControllerFor(theId, this.name);
 
     /* 3. now set the state for the slider */
     controller
       .setState(Common.merge({value, radius, x, y, r}, theParams))
-      .setParent(theTemplate.root())
+      .setParent(theBuilder.root())
       .build();
 
     /* 4. finally return the newly created controller */
@@ -39,4 +39,4 @@ Knob.hover   = 'knob fg';
 Knob.active  = 'knob active';
 Knob.label   = 'knob label';
 
-export default Chart;
+export default Knob;

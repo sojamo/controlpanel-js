@@ -1,26 +1,26 @@
-import Event                                      from '../Events.js'
-import Common                                     from '../Common.js'
-import Controller                                 from '../Controller.js'
-import {createRect, createLabel, createElement}   from '../Builder.js'
-import {updateElementFor, setAttributesFor}       from '../Builder.js'
-import {addEventListener}                         from '../Events.js'
+import Event                                                    from '../Events.js'
+import Common                                                   from '../Common.js'
+import Controller                                               from '../Controller.js'
+import {createRect, createLabel}                                from '../Shapes.js'
+import {createElement, updateElementFor, setAttributesFor}      from '../Builder.js'
+import {addEventListener}                                       from '../Events.js'
 
 
 class ColorPicker {
 
   /**
    * [create description]
-   * @param  {[type]} theTemplate [description]
+   * @param  {[type]} theBuilder  [description]
    * @param  {[type]} theId       [description]
    * @param  {[type]} theParams   [description]
    * @return [type]               [description]
    */
-  static create(theTemplate, theId, theParams) {
+  static create(theBuilder, theId, theParams) {
     /* 1. configure default parameters first */
     const {x=0, y=0, r=0, width=100, height=20, spacing=10, pickerHeight=100, value=[255, 0, 0, 255], hue=[255, 255, 255, 255]} = theParams;
 
     /* 2. create a new controller of type button */
-    const controller = theTemplate.createControllerFor(theId, 'colorPicker');
+    const controller = theBuilder.createControllerFor(theId, this.name);
 
     /* 3. now set the state, events, parent for the button */
     controller
@@ -28,7 +28,7 @@ class ColorPicker {
       .addEventFor(Event.click, {call: {fn: ColorPicker.togglePicker}})
       .addEventFor(Event.mouseEnter, {hover: {is: true}})
       .addEventFor(Event.mouseLeave, {hover: {is: false}})
-      .setParent(theTemplate.root())
+      .setParent(theBuilder.root())
       .build();
 
     /* 4. finally return the newly created controller */

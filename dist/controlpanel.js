@@ -1,7 +1,2707 @@
-<<<<<<< HEAD
-!function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={exports:{},id:r,loaded:!1};return e[r].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}var a=n(12),o=r(a);window.ControlPanel=o.default},function(e,t){"use strict";function n(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=function(){function e(){r(this,e)}return o(e,null,[{key:"b",value:function(e,t){return"boolean"==typeof e?e:t}},{key:"i",value:function(e,t){return Math.round("number"==typeof e?e:t)}},{key:"s",value:function(e,t){return"string"==typeof e?e:t}},{key:"f",value:function(e,t){return"number"==typeof e?e:t}},{key:"constrainValue",value:function(e,t,n){return e<t?t:e>n?n:e}},{key:"inside",value:function(e,t,n){return e>=t&&e<=n}},{key:"outside",value:function(e,t,n){return e<t||e>n}},{key:"mapValue",value:function(e,t,n,r,a){return r+(a-r)*((e-t)/(n-t))}},{key:"objectToString",value:function(e){var t="";return Object.keys(e).forEach(function(n){t=t+" "+n+":"+e[n]+";"}),t}},{key:"elementToObject",value:function(e){var t={};return[].forEach.call(e.attributes,function(e){t[e.name]=e.value}),t}},{key:"isObject",value:function(e){return e&&"object"===("undefined"==typeof e?"undefined":a(e))&&!Array.isArray(e)&&null!==e}},{key:"merge",value:function(e,t){var r=this,a=Object.assign({},e);return this.isObject(e)&&this.isObject(t)&&Object.keys(t).forEach(function(o){r.isObject(t[o])&&o in e?a[o]=r.merge(e[o],t[o]):Object.assign(a,n({},o,t[o]))}),a}}]),e}();t.default=i},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.setText=t.createCanvas=t.createChart=t.createTriangle=t.createInput=t.createCircle=t.createLabel=t.createRect=t.createElement=t.setAttributesFor=t.updateElementFor=t.buildElementsFor=t.buildController=void 0;var l=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=n(1),c=r(u),s=n(5),d=r(s),f=n(6),v=r(f),h=n(7),g=r(h),p=n(8),b=r(p),m=n(9),y=r(m),w=n(10),E=r(w),x=n(11),F=r(x),k=function(e){function t(e){return a(this,t),o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e))}return i(t,e),l(t,[{key:"init",value:function(e){var t=e.top,n=void 0===t?0:t,r=e.left,a=void 0===r?0:r,o=e.name,i=void 0===o?"?":o,l=e.position,u=void 0===l?"absolute":l,s=e.background,d=void 0===s?"rgba(0,0,0,0.25)":s,f={id:"cp5-"+i,class:"cp5",style:{top:n,left:a,position:u,background:d}},h=j(T("svg"),c.default.merge(f,e));return O("button",function(e,t){v.default.update(e,t)}),O("colorPicker",function(e,t){g.default.update(e,t)}),O("range",function(e,t){b.default.update(e,t)}),O("slider",function(e,t){y.default.update(e,t)}),O("textField",function(e,t){E.default.update(e,t)}),O("toggle",function(e,t){F.default.update(e,t)}),O("chart",function(e,t){Chart.update(e,t)}),h}}],[{key:"svgns",value:function(){return"http://www.w3.org/2000/svg"}}]),t}(d.default),_={},O=t.buildController=function(e,t){_[e]=t},j=(t.buildElementsFor=function(e,t){var n=e.type,r=c.default.merge(e.state,t),a=_[n](e,r);return a},t.updateElementFor=function(e,t,n,r){var a=r.text;void 0===e.getElement(t)&&(e.getElement()[t]=n(r),e.getElement().insertBefore(e.getElement(t),e.getElement("area"))),void 0!==a&&(C(e.getElement(t),a),delete r.text),j(e.getElement(t),r),console.log()},t.setAttributesFor=function(e,t){return Object.keys(t).forEach(function(n){e.setAttribute(n,c.default.isObject(t[n])?c.default.objectToString(t[n]):t[n])}),e}),T=t.createElement=function(e){return document.createElementNS(k.svgns(),e)},C=(t.createRect=function(e){var t=e.width,n=void 0===t?100:t,r=e.height,a=void 0===r?100:r,o=e.rx,i=void 0===o?0:o,l=e.ry,u=void 0===l?0:l,s={width:n,height:a,rx:i,ry:u},d=j(T("rect"),c.default.merge(s,e));return d},t.createLabel=function(e){var t=e.textAnchor,n=void 0===t?"start":t,r=e.alignmentBaseline,a=void 0===r?"central":r,o=e.text,i={"alignment-baseline":a,"text-anchor":n};delete e.text;var l=j(C(T("text"),o),c.default.merge(i,e));return l},t.createCircle=function(e){var t=e.r,n=void 0===t?20:t,r=e.cx,a=void 0===r?20:r,o=e.cy,i=void 0===o?20:o,l={r:n,cx:a,cy:i},u=j(T("circle"),c.default.merge(l,e));return u},t.createInput=function(e){var t=e.x,n=void 0===t?0:t,r=e.y,a=void 0===r?0:r,o=e.width,i=void 0===o?100:o,l=e.height,u=void 0===l?20:l,s={x:n,y:a,width:i,height:u};console.log("createInput",s);var d=j(T("foreignObject"),c.default.merge(s,e)),f=j(document.createElement("div"),{class:"single",xmlns:"http://www.w3.org/1999/xhtml"}),v=j(document.createElement("span"),{onblur:'this.setAttribute("contenteditable", false)',style:"font-size:20px; color:rgba(255,255,255,1); line-height: normal; height: "+u+"px",contenteditable:"false"});return f.appendChild(v),d.appendChild(f),d},t.createTriangle=function(e){},t.createChart=function(e){var t=T("svg");T("polyline");return t},t.createCanvas=function(e){},t.setText=function(e,t){return e.innerHTML=t,e});t.default=k},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.addEventListener=t.callEventFor=void 0;var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),c=n(1),s=r(c),d=n(5),f=r(d),v=function(e){function t(e){o(this,t);var n=i(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.dragTarget=void 0,n.viewTarget=void 0,n}return l(t,e),u(t,[{key:"configure",value:function(e,n){var r=this;if(void 0===this.viewTarget){this.viewTarget=document,b(window,t.resize,function(e){}),b(this.viewTarget,t.mouseMove,function(e){void 0!==r.dragTarget&&(r.dragTarget.params.event=e,r.apply(r.dragTarget.controller,"drag",r.dragTarget.params))}),b(this.viewTarget,t.mouseUp,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})});var a=function(){return t.onWheel in r.viewTarget?t.wheel:t.mouseWheel};b(e,a(),function(e){e.preventDefault()}),b(this.viewTarget,t.touchStart,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})},!0),b(e,t.touchMove,function(e){r.base().app.a=e.clientX,e.preventDefault()}),b(this.viewTarget,t.touchEnd,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})})}}},{key:"set",value:function(e,t){return g(e,t),this}},{key:"get",value:function(e){return h[e]||function(){console.log("Event",e,"does not exist.")}}},{key:"apply",value:function(e,t,n){return h[t](this,e,n),this}},{key:"handleKeyEvent",value:function(e,t){var n=[].concat(a(document.querySelectorAll(":hover")));if(n.filter(function(e){return"svg"===e.nodeName}).filter(function(e){return e===theRoot}).length){var r=n.filter(function(e){return void 0!==e.request});r.length&&r.reduce(function(e){return e}).request().change({label:"hello"})}}}]),t}(f.default),h={},g=function(e,t){h[e]=t},p=t.callEventFor=function(e){return h[e]},b=t.addEventListener=function(e,t,n){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];e.addEventListener?e.addEventListener(t,n,r):e.attachEvent&&e.attachEvent("on"+t,n)};g("call",function(e,t,n){var r=n.fn;r(t,n)}),g("startDrag",function(e,t,n){e.dragTarget={controller:t,params:n}}),g("stopDrag",function(e,t,n){e.dragTarget=void 0}),g("drag",function(e,t,n){var r=n.then,a=n.get;n.inputValue=void 0!==a?n.event[a]:0,p(r)(e,t,n)}),g("preventDefault",function(e,t,n){var r=n.event;r.preventDefault()}),g("sliderDown",function(e,t,n){var r=n.event,a=n.element,o=t.state,i=o.min,l=o.max,u=o.width,c=r.clientX-a.area.getBoundingClientRect().left,d=s.default.mapValue(c,0,u,i,l),f=s.default.constrainValue(d,i,l);t.change({value:f})}),g("sliderDrag",function(e,t,n){var r=(n.event,n.inputValue),a=t.state,o=a.min,i=a.max,l=a.width,u=a.value,c=u+s.default.mapValue(r,0,l,0,i-o),d=s.default.constrainValue(c,o,i);t.change({value:d})}),g("rangeDown",function(e,t,n){var r=n.event,a=n.element,o=t.state,i=o.min,l=o.max,u=o.value,c=o.width,d=o.handleWidth,f=s.default.mapValue(u.min,i,l,d,c-d),v=s.default.mapValue(u.max,i,l,d,c-d),h=r.clientX-a.area.getBoundingClientRect().left,g=s.default.inside(h,f-d,f)?"left":s.default.inside(h,v,v+d)?"right":s.default.outside(h,f,v)?void 0:"center";e.dragTarget.applyTo=g}),g("rangeDrag",function(e,t,n){var r=(n.event,n.inputValue),a=t.state,o=a.width,i=a.min,l=a.max,u=a.value,c=u.max-u.min,d=s.default.mapValue(r,0,o,0,l-i),f=void 0===e.dragTarget?"scroll":e.dragTarget.applyTo;switch(f){case"center":case"scroll":var v=s.default.constrainValue(u.min+d,i,l-c),h=v+c;t.change({value:{min:v,max:h}});break;case"left":var g=s.default.constrainValue(u.min+d,i,u.max);t.change({value:{min:g}});break;case"right":var p=s.default.constrainValue(u.max+d,u.min,l);t.change({value:{max:p}})}}),g("hover",function(e,t,n){var r=n.is;t.change({hover:r})}),v.change="change",v.blur="blur",v.click="click",v.focus="focus",v.keyDown="keydown",v.keyPress="keypress",v.keyUp="keyup",v.mouseDown="mousedown",v.mouseEnter="mouseenter",v.mouseLeave="mouseleave",v.mouseMove="mousemove",v.mouseUp="mouseup",v.mouseWheel="mousewheel",v.onWheel="onwheel",v.resize="resize",v.touchEnd="touchend",v.touchMove="touchmove",v.touchStart="touchstart",v.wheel="wheel",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),l=r(i),u=n(3),c=n(2),s=function(){function e(t,n,r){var o=this;a(this,e);var i=t,l=n,u=r;this.id=i,this.type=l,this.state={},this.events=u,this.element=(0,c.setAttributesFor)((0,c.createElement)("g"),{type:l,id:i}),this.element.request=function(){return o},this.element.area=(0,c.setAttributesFor)((0,c.createElement)("rect"),{fill:"rgba(0,0,0,0)"}),this.element.appendChild(this.element.area)}return o(e,[{key:"getElement",value:function(e){return void 0===e?this.element:this.element[e]}},{key:"getEventHandler",value:function(){return this.events}},{key:"getValue",value:function(){return this.state.value}},{key:"getStateFor",value:function(e){return this.state[e]}},{key:"change",value:function(e){this.setState(e),this.build()}},{key:"setState",value:function(e){return this.state=l.default.merge(this.state,e),this}},{key:"removeStateFor",value:function(e){return delete this.state[e],console.log(this.state),this}},{key:"addEventFor",value:function(e,t){var n=this;return Object.keys(t).forEach(function(r){(0,u.addEventListener)(n.getElement("area"),e,function(e){var a=l.default.merge({},t[r]),o=a.element,i=a.event,c=a.get;a.element=void 0===o?n.getElement():n.getElement(o),a.event=void 0===i?e:getEvent(i),a.inputValue=void 0===c?0:e[c],(0,u.callEventFor)(r)(n.getEventHandler(),n,a)})}),this}},{key:"setParent",value:function(e){return e.appendChild(this.getElement()),this}},{key:"build",value:function(){var e=this.state,t=e.width,n=e.height,r=e.x,a=e.y;e.r;(0,c.setAttributesFor)(this.getElement(),{transform:"translate("+r+","+a+")",width:t,height:n}),(0,c.buildElementsFor)(this,this.state)}},{key:"print",value:function(){console.log(this.getElement(),this.state)}}]),e}();t.default=s},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),a=function(){function e(t){n(this,e),this.baseRef=t}return r(e,[{key:"base",value:function(){return this.baseRef}},{key:"builder",value:function(){return this.baseRef.builder}},{key:"events",value:function(){return this.baseRef.events}},{key:"properties",value:function(){return this.baseRef.properties}}]),e}();t.default=a},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(4),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(t,n,r){var a=r.value,o=void 0===a?1:a,i=r.x,u=void 0===i?0:i,s=r.y,d=void 0===s?0:s,v=r.r,h=void 0===v?0:v,g=r.width,p=void 0===g?100:g,b=r.height,m=void 0===b?20:b,y=t.createControllerFor(n,"button");return y.setState(c.default.merge({value:o,width:p,height:m,x:u,y:d,r:h},r)).addEventFor(l.default.click,{call:{fn:function(e){console.log("hello click",e)}}}).addEventFor(l.default.mouseDown,{call:{fn:function(t){(0,f.setAttributesFor)(t.getElement("bg"),{class:e.active})}}}).addEventFor(l.default.mouseUp,{call:{fn:function(t){(0,f.setAttributesFor)(t.getElement("bg"),{class:e.hover})}}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(t.root()).build(),y}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.hover,l=n.option,u=n.icon,c=n.rx,s=void 0===c?4:c,v=n.ry,h=void 0===v?4:v,g=i?e.hover:e.normal,p=r/2,b=a/2;switch((0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:g,rx:s,ry:h}),l){case"icon":(0,f.updateElementFor)(t,"icon",f.createLabel,{x:p,y:b,textAnchor:"middle",class:e.icon,text:u});break;default:(0,f.updateElementFor)(t,"label",f.createLabel,{x:p,y:b,textAnchor:"middle",class:e.label,text:o})}return(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="button bg",v.hover="button fg",v.active="button active",v.label="button label",v.icon="button icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),l=n(3),u=r(l),c=n(1),s=r(c),d=n(4),f=(r(d),n(2)),v=function(){function e(){o(this,e)}return i(e,null,[{key:"create",value:function(e,t,n){var r=n.value,o=void 0===r?1:r,i=n.x,c=void 0===i?0:i,d=n.y,v=void 0===d?0:d,h=n.r,g=void 0===h?0:h,p=n.width,b=void 0===p?100:p,m=n.height,y=void 0===m?20:m,w=e.createControllerFor(t,"colorPicker"),E=function(){var t="picker",n=w.getStateFor(t),r=e.root(),o=void 0;if(void 0===n){var i;!function(){var e=100,n=100,s=10,d=0,h=e-s,g=n-d,p=(0,f.setAttributesFor)((0,f.createElement)("foreignObject"),{width:e,height:n,x:c,y:v+y});o=(0,f.setAttributesFor)(document.createElementNS("http://www.w3.org/1999/xhtml","canvas"),{width:e,height:n}),p.appendChild(o);var b=o.getContext("2d");b.beginPath(),b.rect(0,0,e,n),b.fillStyle="rgba(255,255,255,0.5)",b.fill(),b.beginPath(),b.rect(0,0,10,g);var m=b.createLinearGradient(0,0,0,g);m.addColorStop(0,"rgba(255, 0, 0, 1)"),m.addColorStop(.17,"rgba(255, 255, 0, 1)"),m.addColorStop(.34,"rgba(0, 255, 0, 1)"),m.addColorStop(.51,"rgba(0, 255, 255, 1)"),m.addColorStop(.68,"rgba(0, 0, 255, 1)"),m.addColorStop(.85,"rgba(255, 0, 255, 1)"),m.addColorStop(1,"rgba(255, 0, 0, 1)"),b.fillStyle=m,b.fill();var E="rgba(255,0,0,1)";b.fillStyle=E,b.fillRect(s,d,h,g);var x=b.createLinearGradient(s,d,h,d);x.addColorStop(0,"rgba(255,255,255,1)"),x.addColorStop(1,"rgba(255,255,255,0)"),b.fillStyle=x,b.fillRect(s,d,h,g),i=b.createLinearGradient(s,d,s,g),i.addColorStop(0,"rgba(0,0,0,0)"),i.addColorStop(1,"rgba(0,0,0,1)"),b.fillStyle=i,b.fillRect(s,d,h,g),b.getImageData(0,0,1,1).data,(0,l.addEventListener)(o,u.default.click,function(e){var t=b.getImageData(e.layerX,e.layerY,1,1).data,n="fill: rgba("+t[0]+", "+t[1]+", "+t[2]+", "+t[3]+")";console.log(e,"Hello Color",t,(0,f.setAttributesFor)(w.getElement().childNodes[2],{style:n}))}),r.appendChild(p),w.setState(a({},t,p))}()}else r.removeChild(n),w.removeStateFor(t)};return w.setState(s.default.merge({value:o,width:b,height:y,x:c,y:v,r:g},n)).addEventFor(u.default.click,{call:{fn:E}}).addEventFor(u.default.mouseEnter,{hover:{is:!0}}).addEventFor(u.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),w}},{key:"update",value:function(e,t){var n=t.width,r=t.height,a=t.label,o=t.hover,i=o?"colorPicker active":"colorPicker bg";return(0,f.updateElementFor)(e,"bg",f.createRect,{width:n,height:r,class:i}),(0,f.updateElementFor)(e,"label",f.createLabel,{x:n/2,y:r/2,textAnchor:"middle",class:"colorPicker label",text:a}),(0,f.updateElementFor)(e,"fg",f.createRect,{width:n,height:5,y:r-5}),(0,f.updateElementFor)(e,"area",f.createRect,{width:n,height:r,class:"area"}),e}}]),e}();t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(4),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?{min:.25,max:.75}:r,o=n.min,i=void 0===o?0:o,u=n.max,s=void 0===u?1:u,d=n.x,f=void 0===d?0:d,v=n.y,h=void 0===v?0:v,g=n.r,p=void 0===g?0:g,b=n.width,m=void 0===b?100:b,y=n.height,w=void 0===y?20:y,E=n.handleWidth,x=void 0===E?10:E,F=e.createControllerFor(t,"range");return F.setState(c.default.merge({value:a,min:i,max:s,width:m,height:w,handleWidth:x,x:f,y:h,r:p},n)).addEventFor(l.default.wheel,{rangeDrag:{get:"deltaY"}}).addEventFor(l.default.mouseDown,{startDrag:{then:"rangeDrag",get:"movementX"},rangeDown:{}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),F}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.value,l=n.min,u=n.max,s=n.hover,v=n.handleWidth,h=c.default.mapValue(i.min,l,u,v,r-v),g=c.default.mapValue(i.max,l,u,v,r-v),p=g-h,b=i.min.toFixed(2),m=i.max.toFixed(2),y=s?e.active:e.hover,w=4;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{x:h,width:p,height:a,class:y}),(0,f.updateElementFor)(t,"min",f.createRect,{x:h-v,width:v,height:a,class:e.hover}),(0,f.updateElementFor)(t,"max",f.createRect,{x:g,width:v,height:a,class:e.hover}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+w,y:a/2,"text-anchor":"start",class:e.label,text:o}),(0,f.updateElementFor)(t,"valueMin",f.createLabel,{x:w,y:a/2,"text-anchor":"start",class:e.label,text:b}),(0,f.updateElementFor)(t,"valueMax",f.createLabel,{x:r-w,y:a/2,"text-anchor":"end",class:e.label,text:m}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="range bg",v.hover="range fg",v.active="range active",v.label="range label",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(4),d=r(s),f=n(2),v=(r(f),function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?.5:r,o=n.min,i=void 0===o?0:o,u=n.max,s=void 0===u?1:u,d=n.x,f=void 0===d?0:d,v=n.y,h=void 0===v?0:v,g=n.r,p=void 0===g?0:g,b=n.width,m=void 0===b?100:b,y=n.height,w=void 0===y?20:y,E=e.createControllerFor(t,"slider");return E.setState(c.default.merge({value:a,min:i,max:s,width:m,height:w,x:f,y:h,r:p},n)).addEventFor(l.default.wheel,{sliderDrag:{get:"deltaY"}}).addEventFor(l.default.mouseDown,{startDrag:{then:"sliderDrag",get:"movementX"},sliderDown:{}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),E}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.min,l=n.max,u=n.value,s=n.hover,v=c.default.constrainValue(u,i,l),h=c.default.mapValue(v,i,l,0,r),g=v.toFixed(2),p=s?e.active:e.hover,b=4;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{width:h,height:a,class:p}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+b,y:a/2,"text-anchor":"start",class:e.label,text:o}),(0,f.updateElementFor)(t,"value",f.createLabel,{x:b,y:a/2,"text-anchor":"start",class:e.label,text:g}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}());v.normal="slider bg",v.hover="slider fg",v.active="slider active",v.label="slider label",v.icon="slider icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(4),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?1:r,o=n.x,i=void 0===o?0:o,u=n.y,s=void 0===u?0:u,d=n.r,f=void 0===d?0:d,v=n.width,h=void 0===v?100:v,g=n.height,p=void 0===g?20:g,b=e.createControllerFor(t,"textField"),m=function(){var e=b.getElement("input").childNodes[0].childNodes[0];return e.setAttribute("contenteditable",!0),e.onkeypress=function(t){13===t.charCode&&e.blur(),console.log(e.innerHTML)},e};return b.setState(c.default.merge({value:a,width:h,height:p,x:i,y:s,r:f},n)).addEventFor(l.default.focus,{call:{fn:function(){m().focus()}}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),b}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.hover,l=n.rx,u=void 0===l?0:l,c=n.ry,s=void 0===c?0:c,v=i?e.active:e.hover;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal,rx:u,ry:s}),(0,f.updateElementFor)(t,"baseline",f.createRect,{width:r,height:2,y:a-2,class:v,rx:u,ry:s}),(0,f.updateElementFor)(t,"input",f.createInput,{width:r,height:a,class:e.label}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+4,y:a/2,textAnchor:"start",alignmentBaseline:"central",class:e.label,text:o}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="textField bg",v.hover="textField fg",v.active="textField active",v.label="textField label",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(4),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0!==r&&r,o=n.x,i=void 0===o?0:o,u=n.y,s=void 0===u?0:u,d=n.r,f=void 0===d?0:d,v=n.width,h=void 0===v?20:v,g=n.height,p=void 0===g?20:g,b=e.createControllerFor(t,"toggle");return b.setState(c.default.merge({value:a,width:h,height:p,x:i,y:s,r:f},n)).addEventFor(l.default.click,{call:{fn:function(e){e.change({value:!b.getValue()})}}}).addEventFor(l.default.focus,{call:{fn:function(e){e.change({focus:!0})}}}).addEventFor(l.default.blur,{call:{fn:function(e){e.change({focus:!1})}}}).setParent(e.root()).build(),b}},{key:"update",value:function(t,n){var r=n.value,a=n.width,o=n.height,i=n.label,l=void 0===i?"":i,u=n.option,c=n.rx,s=void 0===c?4:c,v=n.ry,h=void 0===v?4:v,g=n.icon,p=!0,b=r?e.active:e.normal;switch(u){case"block":(0,f.updateElementFor)(t,"bg",f.createRect,{width:a,height:o,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{x:r?a/2:0,width:a/2,height:o,class:b}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l});break;case"circular":var m=2,y=o/2,w=r?e.active:e.hover;(0,f.updateElementFor)(t,"bg",f.createRect,{rx:y,ry:y,width:a,height:o,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createCircle,{r:y-m,cx:r?a-y:y,cy:y,class:w}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l});break;case"icon":p=!1,(0,f.updateElementFor)(t,"bg",f.createRect,{rx:s,ry:h,width:a,height:o,class:b}),(0,f.updateElementFor)(t,"icon",f.createLabel,{x:a/2,y:o/2,textAnchor:"middle",class:e.icon,text:g});break;default:(0,f.updateElementFor)(t,"bg",f.createRect,{width:a,height:o,class:b})}return p&&(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l}),(0,f.updateElementFor)(t,"area",f.createRect,{width:a,height:o,class:d.default.area}),t}}]),e}();v.normal="toggle bg",v.hover="toggle fg",v.active="toggle active",v.label="toggle label",v.icon="toggle icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(2),l=r(i),u=n(1),c=r(u),s=n(3),d=r(s),f=n(13),v=r(f),h=n(15),g=r(h),p=n(14),b=r(p),m=function(){function e(t,n){a(this,e);var r=c.default.merge({name:"",width:400,height:300},n);this.app=t,this.name=r.name,this.styles=new b.default(this),this.builder=new l.default(this),this.observer=new v.default(this),this.events=new d.default(this),this.templates=new g.default(this),this.controllers={};var o=this.builder.init(r);document.body.appendChild(o),this.events.configure(o,this.name),this.templates.configure(o);var u=(0,i.setAttributesFor)(document.createElementNS("http://www.w3.org/2000/svg","circle"),{style:{fill:"rgba(255,255,255,0.5)"},cx:12,cy:12,r:8});u.value=!1,(0,s.addEventListener)(u,d.default.click,function(e){u.value=!u.value,(0,i.setAttributesFor)(o,{height:u.value?24:r.height})}),o.appendChild(u)}return o(e,[{key:"create",value:function(e,t){return this.controllers[e]=this.templates.create(e,t),console.log("created controller:",this.controllers[e],this.controllers),this}},{key:"change",value:function(e,t){var n=this.controllers[e];return n.change(t),this}},{key:"remove",value:function(e){return console.log("remove",theTarget,"removes theTarget and all children and observers accordingly."),this}},{key:"print",value:function(e){this.controllers[e].print()}}]),e}();t.default=m},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),l=r(i),u=function(){function e(){a(this,e),this.observer=new MutationObserver(function(e){e.map(function(e){switch(console.log(">",e.attributeName),e.attributeName){case"x":var t=l.default.i(100*Math.random(),0);e.target.setAttribute("transform","translate("+t+", 0)")}return e})}),this.config={attributes:!0,childList:!0,characterData:!0}}return o(e,[{key:"observe",value:function(e){this.observer.observe(e,this.config)}}]),e}();t.default=u},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function e(){n(this,e);var t=["libraries/assets/styles.css","http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];t.forEach(function(e){var t=document.createElement("link");t.rel="stylesheet",t.type="text/css",t.media="screen",t.href=e,document.getElementsByTagName("head")[0].appendChild(t)})};t.default=r},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function");
-}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var l=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=n(5),c=r(u),s=n(4),d=r(s),f=n(6),v=r(f),h=n(7),g=r(h),p=n(8),b=r(p),m=n(9),y=r(m),w=n(10),E=r(w),x=n(11),F=r(x),k=function(e){function t(e){a(this,t);var n=o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.templates={},n.rootRef=void 0,n}return i(t,e),l(t,[{key:"create",value:function(e,t){var n=t.type;if(this.templates.hasOwnProperty(n))return this.templates[n](e,t)}},{key:"configure",value:function(e){var t=this;this.rootRef=e,this.setTemplateFor("button",function(e,n){return v.default.create(t,e,n)}),this.setTemplateFor("colorPicker",function(e,n){return g.default.create(t,e,n)}),this.setTemplateFor("range",function(e,n){return b.default.create(t,e,n)}),this.setTemplateFor("slider",function(e,n){return y.default.create(t,e,n)}),this.setTemplateFor("textField",function(e,n){return E.default.create(t,e,n)}),this.setTemplateFor("toggle",function(e,n){return F.default.create(t,e,n)})}},{key:"createControllerFor",value:function(e,t){var n=new d.default(e,t,this.events());return n}},{key:"setTemplateFor",value:function(e,t){return this.templates[e]=t,this}},{key:"root",value:function(){return this.rootRef}}]),t}(c.default);t.default=k}]);
-=======
-!function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={exports:{},id:r,loaded:!1};return e[r].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}var a=n(11),o=r(a);window.ControlPanel=o.default},function(e,t){"use strict";function n(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=function(){function e(){r(this,e)}return o(e,null,[{key:"b",value:function(e,t){return"boolean"==typeof e?e:t}},{key:"i",value:function(e,t){return Math.round("number"==typeof e?e:t)}},{key:"s",value:function(e,t){return"string"==typeof e?e:t}},{key:"f",value:function(e,t){return"number"==typeof e?e:t}},{key:"constrainValue",value:function(e,t,n){return e<t?t:e>n?n:e}},{key:"inside",value:function(e,t,n){return e>=t&&e<=n}},{key:"outside",value:function(e,t,n){return e<t||e>n}},{key:"mapValue",value:function(e,t,n,r,a){return r+(a-r)*((e-t)/(n-t))}},{key:"objectToString",value:function(e){var t="";return Object.keys(e).forEach(function(n){t=t+" "+n+":"+e[n]+";"}),t}},{key:"elementToObject",value:function(e){var t={};return[].forEach.call(e.attributes,function(e){t[e.name]=e.value}),t}},{key:"isObject",value:function(e){return e&&"object"===("undefined"==typeof e?"undefined":a(e))&&!Array.isArray(e)&&null!==e}},{key:"merge",value:function(e,t){var r=this,a=Object.assign({},e);return this.isObject(e)&&this.isObject(t)&&Object.keys(t).forEach(function(o){r.isObject(t[o])&&o in e?a[o]=r.merge(e[o],t[o]):Object.assign(a,n({},o,t[o]))}),a}}]),e}();t.default=i},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.setText=t.createCanvas=t.createChart=t.createTriangle=t.createInput=t.createCircle=t.createLabel=t.createRect=t.createElement=t.setAttributesFor=t.updateElementFor=t.buildElementsFor=t.buildController=void 0;var l=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=n(1),c=r(u),s=n(4),d=r(s),f=n(5),v=r(f),h=n(6),g=r(h),p=n(7),b=r(p),m=n(8),y=r(m),w=n(9),E=r(w),x=n(10),F=r(x),k=function(e){function t(e){return a(this,t),o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e))}return i(t,e),l(t,[{key:"init",value:function(e){var t=e.top,n=void 0===t?0:t,r=e.left,a=void 0===r?0:r,o=e.name,i=void 0===o?"?":o,l=e.position,u=void 0===l?"absolute":l,s=e.background,d=void 0===s?"rgba(0,0,0,0.25)":s,f={id:"cp5-"+i,class:"cp5",style:{top:n,left:a,position:u,background:d}},h=j(T("svg"),c.default.merge(f,e));return O("button",function(e,t){v.default.update(e,t)}),O("colorPicker",function(e,t){g.default.update(e,t)}),O("range",function(e,t){b.default.update(e,t)}),O("slider",function(e,t){y.default.update(e,t)}),O("textField",function(e,t){E.default.update(e,t)}),O("toggle",function(e,t){F.default.update(e,t)}),O("chart",function(e,t){Chart.update(e,t)}),h}}],[{key:"svgns",value:function(){return"http://www.w3.org/2000/svg"}}]),t}(d.default),_={},O=t.buildController=function(e,t){_[e]=t},j=(t.buildElementsFor=function(e,t){var n=e.type,r=c.default.merge(e.state,t),a=_[n](e,r);return a},t.updateElementFor=function(e,t,n,r){var a=r.text;void 0===e.getElement(t)&&(e.getElement()[t]=n(r),e.getElement().insertBefore(e.getElement(t),e.getElement("area"))),void 0!==a&&(C(e.getElement(t),a),delete r.text),j(e.getElement(t),r),console.log()},t.setAttributesFor=function(e,t){return Object.keys(t).forEach(function(n){e.setAttribute(n,c.default.isObject(t[n])?c.default.objectToString(t[n]):t[n])}),e}),T=t.createElement=function(e){return document.createElementNS(k.svgns(),e)},C=(t.createRect=function(e){var t=e.width,n=void 0===t?100:t,r=e.height,a=void 0===r?100:r,o=e.rx,i=void 0===o?0:o,l=e.ry,u=void 0===l?0:l,s={width:n,height:a,rx:i,ry:u},d=j(T("rect"),c.default.merge(s,e));return d},t.createLabel=function(e){var t=e.textAnchor,n=void 0===t?"start":t,r=e.alignmentBaseline,a=void 0===r?"central":r,o=e.text,i={"alignment-baseline":a,"text-anchor":n};delete e.text;var l=j(C(T("text"),o),c.default.merge(i,e));return l},t.createCircle=function(e){var t=e.r,n=void 0===t?20:t,r=e.cx,a=void 0===r?20:r,o=e.cy,i=void 0===o?20:o,l={r:n,cx:a,cy:i},u=j(T("circle"),c.default.merge(l,e));return u},t.createInput=function(e){var t=e.x,n=void 0===t?0:t,r=e.y,a=void 0===r?0:r,o=e.width,i=void 0===o?100:o,l=e.height,u=void 0===l?20:l,s={x:n,y:a,width:i,height:u};console.log("createInput",s);var d=j(T("foreignObject"),c.default.merge(s,e)),f=j(document.createElement("div"),{class:"single",xmlns:"http://www.w3.org/1999/xhtml"}),v=j(document.createElement("span"),{onblur:'this.setAttribute("contenteditable", false)',style:"font-size:20px; color:rgba(255,255,255,1); line-height: normal; height: "+u+"px",contenteditable:"false"});return f.appendChild(v),d.appendChild(f),d},t.createTriangle=function(e){},t.createChart=function(e){var t=T("svg");T("polyline");return t},t.createCanvas=function(e){},t.setText=function(e,t){return e.innerHTML=t,e});t.default=k},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.addEventListener=t.callEventFor=void 0;var u=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),c=n(1),s=r(c),d=n(4),f=r(d),v=function(e){function t(e){o(this,t);var n=i(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.dragTarget=void 0,n.viewTarget=void 0,n}return l(t,e),u(t,[{key:"configure",value:function(e,n){var r=this;if(void 0===this.viewTarget){this.viewTarget=document,b(window,t.resize,function(e){}),b(this.viewTarget,t.mouseMove,function(e){void 0!==r.dragTarget&&(r.dragTarget.params.event=e,r.apply(r.dragTarget.controller,"drag",r.dragTarget.params))}),b(this.viewTarget,t.mouseUp,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})});var a=function(){return t.onWheel in r.viewTarget?t.wheel:t.mouseWheel};b(e,a(),function(e){e.preventDefault()}),b(this.viewTarget,t.touchStart,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})},!0),b(e,t.touchMove,function(e){r.base().app.a=e.clientX,e.preventDefault()}),b(this.viewTarget,t.touchEnd,function(e){r.apply(void 0!==r.dragTarget?r.dragTarget.controller:void 0,"stopDrag",{event:e})})}}},{key:"set",value:function(e,t){return g(e,t),this}},{key:"get",value:function(e){return h[e]||function(){console.log("Event",e,"does not exist.")}}},{key:"apply",value:function(e,t,n){return h[t](this,e,n),this}},{key:"handleKeyEvent",value:function(e,t){var n=[].concat(a(document.querySelectorAll(":hover")));if(n.filter(function(e){return"svg"===e.nodeName}).filter(function(e){return e===theRoot}).length){var r=n.filter(function(e){return void 0!==e.request});r.length&&r.reduce(function(e){return e}).request().change({label:"hello"})}}}]),t}(f.default),h={},g=function(e,t){h[e]=t},p=t.callEventFor=function(e){return h[e]},b=t.addEventListener=function(e,t,n){var r=arguments.length>3&&void 0!==arguments[3]&&arguments[3];e.addEventListener?e.addEventListener(t,n,r):e.attachEvent&&e.attachEvent("on"+t,n)};g("call",function(e,t,n){var r=n.fn;r(t,n)}),g("startDrag",function(e,t,n){e.dragTarget={controller:t,params:n}}),g("stopDrag",function(e,t,n){e.dragTarget=void 0}),g("drag",function(e,t,n){var r=n.then,a=n.get;n.inputValue=void 0!==a?n.event[a]:0,p(r)(e,t,n)}),g("preventDefault",function(e,t,n){var r=n.event;r.preventDefault()}),g("sliderDown",function(e,t,n){var r=n.event,a=n.element,o=t.state,i=o.min,l=o.max,u=o.width,c=r.clientX-a.area.getBoundingClientRect().left,d=s.default.mapValue(c,0,u,i,l),f=s.default.constrainValue(d,i,l);t.change({value:f})}),g("sliderDrag",function(e,t,n){var r=(n.event,n.inputValue),a=t.state,o=a.min,i=a.max,l=a.width,u=a.value,c=u+s.default.mapValue(r,0,l,0,i-o),d=s.default.constrainValue(c,o,i);t.change({value:d})}),g("rangeDown",function(e,t,n){var r=n.event,a=n.element,o=t.state,i=o.min,l=o.max,u=o.value,c=o.width,d=o.handleWidth,f=s.default.mapValue(u.min,i,l,d,c-d),v=s.default.mapValue(u.max,i,l,d,c-d),h=r.clientX-a.area.getBoundingClientRect().left,g=s.default.inside(h,f-d,f)?"left":s.default.inside(h,v,v+d)?"right":s.default.outside(h,f,v)?void 0:"center";e.dragTarget.applyTo=g}),g("rangeDrag",function(e,t,n){var r=(n.event,n.inputValue),a=t.state,o=a.width,i=a.min,l=a.max,u=a.value,c=u.max-u.min,d=s.default.mapValue(r,0,o,0,l-i),f=void 0===e.dragTarget?"scroll":e.dragTarget.applyTo;switch(f){case"center":case"scroll":var v=s.default.constrainValue(u.min+d,i,l-c),h=v+c;t.change({value:{min:v,max:h}});break;case"left":var g=s.default.constrainValue(u.min+d,i,u.max);t.change({value:{min:g}});break;case"right":var p=s.default.constrainValue(u.max+d,u.min,l);t.change({value:{max:p}})}}),g("hover",function(e,t,n){var r=n.is;t.change({hover:r})}),v.change="change",v.blur="blur",v.click="click",v.focus="focus",v.keyDown="keydown",v.keyPress="keypress",v.keyUp="keyup",v.mouseDown="mousedown",v.mouseEnter="mouseenter",v.mouseLeave="mouseleave",v.mouseMove="mousemove",v.mouseUp="mouseup",v.mouseWheel="mousewheel",v.onWheel="onwheel",v.resize="resize",v.touchEnd="touchend",v.touchMove="touchmove",v.touchStart="touchstart",v.wheel="wheel",t.default=v},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),a=function(){function e(t){n(this,e),this.baseRef=t}return r(e,[{key:"base",value:function(){return this.baseRef}},{key:"builder",value:function(){return this.baseRef.builder}},{key:"events",value:function(){return this.baseRef.events}},{key:"properties",value:function(){return this.baseRef.properties}}]),e}();t.default=a},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(12),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(t,n,r){var a=r.value,o=void 0===a?1:a,i=r.x,u=void 0===i?0:i,s=r.y,d=void 0===s?0:s,v=r.r,h=void 0===v?0:v,g=r.width,p=void 0===g?100:g,b=r.height,m=void 0===b?20:b,y=t.createControllerFor(n,"button");return y.setState(c.default.merge({value:o,width:p,height:m,x:u,y:d,r:h},r)).addEventFor(l.default.click,{call:{fn:function(e){console.log("hello click",e)}}}).addEventFor(l.default.mouseDown,{call:{fn:function(t){(0,f.setAttributesFor)(t.getElement("bg"),{class:e.active})}}}).addEventFor(l.default.mouseUp,{call:{fn:function(t){(0,f.setAttributesFor)(t.getElement("bg"),{class:e.hover})}}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(t.root()).build(),y}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.hover,l=n.option,u=n.icon,c=n.rx,s=void 0===c?4:c,v=n.ry,h=void 0===v?4:v,g=i?e.hover:e.normal,p=r/2,b=a/2;switch((0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:g,rx:s,ry:h}),l){case"icon":(0,f.updateElementFor)(t,"icon",f.createLabel,{x:p,y:b,textAnchor:"middle",class:e.icon,text:u});break;default:(0,f.updateElementFor)(t,"label",f.createLabel,{x:p,y:b,textAnchor:"middle",class:e.label,text:o})}return(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="button bg",v.hover="button fg",v.active="button active",v.label="button label",v.icon="button icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),l=n(3),u=r(l),c=n(1),s=r(c),d=n(12),f=(r(d),n(2)),v=function(){function e(){o(this,e)}return i(e,null,[{key:"create",value:function(e,t,n){var r=n.value,o=void 0===r?1:r,i=n.x,c=void 0===i?0:i,d=n.y,v=void 0===d?0:d,h=n.r,g=void 0===h?0:h,p=n.width,b=void 0===p?100:p,m=n.height,y=void 0===m?20:m,w=e.createControllerFor(t,"colorPicker"),E=function(){var t="picker",n=w.getStateFor(t),r=e.root(),o=void 0;if(void 0===n){var i;!function(){var e=100,n=100,s=10,d=0,h=e-s,g=n-d,p=(0,f.setAttributesFor)((0,f.createElement)("foreignObject"),{width:e,height:n,x:c,y:v+y});o=(0,f.setAttributesFor)(document.createElementNS("http://www.w3.org/1999/xhtml","canvas"),{width:e,height:n}),p.appendChild(o);var b=o.getContext("2d");b.beginPath(),b.rect(0,0,e,n),b.fillStyle="rgba(255,255,255,0.5)",b.fill(),b.beginPath(),b.rect(0,0,10,g);var m=b.createLinearGradient(0,0,0,g);m.addColorStop(0,"rgba(255, 0, 0, 1)"),m.addColorStop(.17,"rgba(255, 255, 0, 1)"),m.addColorStop(.34,"rgba(0, 255, 0, 1)"),m.addColorStop(.51,"rgba(0, 255, 255, 1)"),m.addColorStop(.68,"rgba(0, 0, 255, 1)"),m.addColorStop(.85,"rgba(255, 0, 255, 1)"),m.addColorStop(1,"rgba(255, 0, 0, 1)"),b.fillStyle=m,b.fill();var E="rgba(255,0,0,1)";b.fillStyle=E,b.fillRect(s,d,h,g);var x=b.createLinearGradient(s,d,h,d);x.addColorStop(0,"rgba(255,255,255,1)"),x.addColorStop(1,"rgba(255,255,255,0)"),b.fillStyle=x,b.fillRect(s,d,h,g),i=b.createLinearGradient(s,d,s,g),i.addColorStop(0,"rgba(0,0,0,0)"),i.addColorStop(1,"rgba(0,0,0,1)"),b.fillStyle=i,b.fillRect(s,d,h,g),b.getImageData(0,0,1,1).data,(0,l.addEventListener)(o,u.default.click,function(e){var t=b.getImageData(e.layerX,e.layerY,1,1).data,n="fill: rgba("+t[0]+", "+t[1]+", "+t[2]+", "+t[3]+")";console.log(e,"Hello Color",t,(0,f.setAttributesFor)(w.getElement().childNodes[2],{style:n}))}),r.appendChild(p),w.setState(a({},t,p))}()}else r.removeChild(n),w.removeStateFor(t)};return w.setState(s.default.merge({value:o,width:b,height:y,x:c,y:v,r:g},n)).addEventFor(u.default.click,{call:{fn:E}}).addEventFor(u.default.mouseEnter,{hover:{is:!0}}).addEventFor(u.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),w}},{key:"update",value:function(e,t){var n=t.width,r=t.height,a=t.label,o=t.hover,i=o?"colorPicker active":"colorPicker bg";return(0,f.updateElementFor)(e,"bg",f.createRect,{width:n,height:r,class:i}),(0,f.updateElementFor)(e,"label",f.createLabel,{x:n/2,y:r/2,textAnchor:"middle",class:"colorPicker label",text:a}),(0,f.updateElementFor)(e,"fg",f.createRect,{width:n,height:5,y:r-5}),(0,f.updateElementFor)(e,"area",f.createRect,{width:n,height:r,class:"area"}),e}}]),e}();t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(12),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?{min:.25,max:.75}:r,o=n.min,i=void 0===o?0:o,u=n.max,s=void 0===u?1:u,d=n.x,f=void 0===d?0:d,v=n.y,h=void 0===v?0:v,g=n.r,p=void 0===g?0:g,b=n.width,m=void 0===b?100:b,y=n.height,w=void 0===y?20:y,E=n.handleWidth,x=void 0===E?10:E,F=e.createControllerFor(t,"range");return F.setState(c.default.merge({value:a,min:i,max:s,width:m,height:w,handleWidth:x,x:f,y:h,r:p},n)).addEventFor(l.default.wheel,{rangeDrag:{get:"deltaY"}}).addEventFor(l.default.mouseDown,{startDrag:{then:"rangeDrag",get:"movementX"},rangeDown:{}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),F}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.value,l=n.min,u=n.max,s=n.hover,v=n.handleWidth,h=c.default.mapValue(i.min,l,u,v,r-v),g=c.default.mapValue(i.max,l,u,v,r-v),p=g-h,b=i.min.toFixed(2),m=i.max.toFixed(2),y=s?e.active:e.hover,w=4;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{x:h,width:p,height:a,class:y}),(0,f.updateElementFor)(t,"min",f.createRect,{x:h-v,width:v,height:a,class:e.hover}),(0,f.updateElementFor)(t,"max",f.createRect,{x:g,width:v,height:a,class:e.hover}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+w,y:a/2,"text-anchor":"start",class:e.label,text:o}),(0,f.updateElementFor)(t,"valueMin",f.createLabel,{x:w,y:a/2,"text-anchor":"start",class:e.label,text:b}),(0,f.updateElementFor)(t,"valueMax",f.createLabel,{x:r-w,y:a/2,"text-anchor":"end",class:e.label,text:m}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="range bg",v.hover="range fg",v.active="range active",v.label="range label",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(12),d=r(s),f=n(2),v=(r(f),function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?.5:r,o=n.min,i=void 0===o?0:o,u=n.max,s=void 0===u?1:u,d=n.x,f=void 0===d?0:d,v=n.y,h=void 0===v?0:v,g=n.r,p=void 0===g?0:g,b=n.width,m=void 0===b?100:b,y=n.height,w=void 0===y?20:y,E=e.createControllerFor(t,"slider");return E.setState(c.default.merge({value:a,min:i,max:s,width:m,height:w,x:f,y:h,r:p},n)).addEventFor(l.default.wheel,{sliderDrag:{get:"deltaY"}}).addEventFor(l.default.mouseDown,{startDrag:{then:"sliderDrag",get:"movementX"},sliderDown:{}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),E}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.min,l=n.max,u=n.value,s=n.hover,v=c.default.constrainValue(u,i,l),h=c.default.mapValue(v,i,l,0,r),g=v.toFixed(2),p=s?e.active:e.hover,b=4;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{width:h,height:a,class:p}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+b,y:a/2,"text-anchor":"start",class:e.label,text:o}),(0,f.updateElementFor)(t,"value",f.createLabel,{x:b,y:a/2,"text-anchor":"start",class:e.label,text:g}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}());v.normal="slider bg",v.hover="slider fg",v.active="slider active",v.label="slider label",v.icon="slider icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(12),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0===r?1:r,o=n.x,i=void 0===o?0:o,u=n.y,s=void 0===u?0:u,d=n.r,f=void 0===d?0:d,v=n.width,h=void 0===v?100:v,g=n.height,p=void 0===g?20:g,b=e.createControllerFor(t,"textField"),m=function(){var e=b.getElement("input").childNodes[0].childNodes[0];return e.setAttribute("contenteditable",!0),e.onkeypress=function(t){13===t.charCode&&e.blur(),console.log(e.innerHTML)},e};return b.setState(c.default.merge({value:a,width:h,height:p,x:i,y:s,r:f},n)).addEventFor(l.default.focus,{call:{fn:function(){m().focus()}}}).addEventFor(l.default.mouseEnter,{hover:{is:!0}}).addEventFor(l.default.mouseLeave,{hover:{is:!1}}).setParent(e.root()).build(),b}},{key:"update",value:function(t,n){var r=n.width,a=n.height,o=n.label,i=n.hover,l=n.rx,u=void 0===l?0:l,c=n.ry,s=void 0===c?0:c,v=i?e.active:e.hover;return(0,f.updateElementFor)(t,"bg",f.createRect,{width:r,height:a,class:e.normal,rx:u,ry:s}),(0,f.updateElementFor)(t,"baseline",f.createRect,{width:r,height:2,y:a-2,class:v,rx:u,ry:s}),(0,f.updateElementFor)(t,"input",f.createInput,{width:r,height:a,class:e.label}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:r+4,y:a/2,textAnchor:"start",alignmentBaseline:"central",class:e.label,text:o}),(0,f.updateElementFor)(t,"area",f.createRect,{width:r,height:a,class:d.default.area}),t}}]),e}();v.normal="textField bg",v.hover="textField fg",v.active="textField active",v.label="textField label",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),l=r(i),u=n(1),c=r(u),s=n(12),d=r(s),f=n(2),v=function(){function e(){a(this,e)}return o(e,null,[{key:"create",value:function(e,t,n){var r=n.value,a=void 0!==r&&r,o=n.x,i=void 0===o?0:o,u=n.y,s=void 0===u?0:u,d=n.r,f=void 0===d?0:d,v=n.width,h=void 0===v?20:v,g=n.height,p=void 0===g?20:g,b=e.createControllerFor(t,"toggle");return b.setState(c.default.merge({value:a,width:h,height:p,x:i,y:s,r:f},n)).addEventFor(l.default.click,{call:{fn:function(e){e.change({value:!b.getValue()})}}}).addEventFor(l.default.focus,{call:{fn:function(e){e.change({focus:!0})}}}).addEventFor(l.default.blur,{call:{fn:function(e){e.change({focus:!1})}}}).setParent(e.root()).build(),b}},{key:"update",value:function(t,n){var r=n.value,a=n.width,o=n.height,i=n.label,l=void 0===i?"":i,u=n.option,c=n.rx,s=void 0===c?4:c,v=n.ry,h=void 0===v?4:v,g=n.icon,p=!0,b=r?e.active:e.normal;switch(u){case"block":(0,f.updateElementFor)(t,"bg",f.createRect,{width:a,height:o,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createRect,{x:r?a/2:0,width:a/2,height:o,class:b}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l});break;case"circular":var m=2,y=o/2,w=r?e.active:e.hover;(0,f.updateElementFor)(t,"bg",f.createRect,{rx:y,ry:y,width:a,height:o,class:e.normal}),(0,f.updateElementFor)(t,"fg",f.createCircle,{r:y-m,cx:r?a-y:y,cy:y,class:w}),(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l});break;case"icon":p=!1,(0,f.updateElementFor)(t,"bg",f.createRect,{rx:s,ry:h,width:a,height:o,class:b}),(0,f.updateElementFor)(t,"icon",f.createLabel,{x:a/2,y:o/2,textAnchor:"middle",class:e.icon,text:g});break;default:(0,f.updateElementFor)(t,"bg",f.createRect,{width:a,height:o,class:b})}return p&&(0,f.updateElementFor)(t,"label",f.createLabel,{x:a+4,y:o/2,class:e.label,text:l}),(0,f.updateElementFor)(t,"area",f.createRect,{width:a,height:o,class:d.default.area}),t}}]),e}();v.normal="toggle bg",v.hover="toggle fg",v.active="toggle active",v.label="toggle label",v.icon="toggle icon",t.default=v},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(2),l=r(i),u=n(1),c=r(u),s=n(3),d=r(s),f=n(13),v=r(f),h=n(15),g=r(h),p=n(14),b=r(p),m=function(){function e(t,n){a(this,e);var r=c.default.merge({name:"",width:400,height:300},n);this.app=t,this.name=r.name,this.styles=new b.default(this),this.builder=new l.default(this),this.observer=new v.default(this),this.events=new d.default(this),this.templates=new g.default(this),this.controllers={};var o=this.builder.init(r);document.body.appendChild(o),this.events.configure(o,this.name),this.templates.configure(o);var u=(0,i.setAttributesFor)(document.createElementNS("http://www.w3.org/2000/svg","circle"),{style:{fill:"rgba(255,255,255,0.5)"},cx:12,cy:12,r:8});u.value=!1,(0,s.addEventListener)(u,d.default.click,function(e){u.value=!u.value,(0,i.setAttributesFor)(o,{height:u.value?24:r.height})}),o.appendChild(u)}return o(e,[{key:"create",value:function(e,t){return this.controllers[e]=this.templates.create(e,t),console.log("created controller:",this.controllers[e],this.controllers),this}},{key:"change",value:function(e,t){var n=this.controllers[e];return n.change(t),this}},{key:"remove",value:function(e){return console.log("remove",theTarget,"removes theTarget and all children and observers accordingly."),this}},{key:"print",value:function(e){this.controllers[e].print()}}]),e}();t.default=m},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),l=r(i),u=n(3),c=n(2),s=function(){function e(t,n,r){var o=this;a(this,e);var i=t,l=n,u=r;this.id=i,this.type=l,this.state={},this.events=u,this.element=(0,c.setAttributesFor)((0,c.createElement)("g"),{type:l,id:i}),this.element.request=function(){return o},this.element.area=(0,c.setAttributesFor)((0,c.createElement)("rect"),{fill:"rgba(0,0,0,0)"}),this.element.appendChild(this.element.area)}return o(e,[{key:"getElement",value:function(e){return void 0===e?this.element:this.element[e]}},{key:"getEventHandler",value:function(){return this.events}},{key:"getValue",value:function(){return this.state.value}},{key:"getStateFor",value:function(e){return this.state[e]}},{key:"change",value:function(e){this.setState(e),this.build()}},{key:"setState",value:function(e){return this.state=l.default.merge(this.state,e),this}},{key:"removeStateFor",value:function(e){return delete this.state[e],console.log(this.state),this}},{key:"addEventFor",value:function(e,t){var n=this;return Object.keys(t).forEach(function(r){(0,u.addEventListener)(n.getElement("area"),e,function(e){var a=l.default.merge({},t[r]),o=a.element,i=a.event,c=a.get;a.element=void 0===o?n.getElement():n.getElement(o),a.event=void 0===i?e:getEvent(i),a.inputValue=void 0===c?0:e[c],(0,u.callEventFor)(r)(n.getEventHandler(),n,a)})}),this}},{key:"setParent",value:function(e){return e.appendChild(this.getElement()),this}},{key:"build",value:function(){var e=this.state,t=e.width,n=e.height,r=e.x,a=e.y;e.r;(0,c.setAttributesFor)(this.getElement(),{transform:"translate("+r+","+a+")",width:t,height:n}),(0,c.buildElementsFor)(this,this.state)}},{key:"print",value:function(){console.log(this.getElement(),this.state)}}]),e}();t.default=s},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(1),l=r(i),u=function(){function e(){a(this,e),this.observer=new MutationObserver(function(e){e.map(function(e){switch(console.log(">",e.attributeName),e.attributeName){case"x":var t=l.default.i(100*Math.random(),0);e.target.setAttribute("transform","translate("+t+", 0)")}return e})}),this.config={attributes:!0,childList:!0,characterData:!0}}return o(e,[{key:"observe",value:function(e){this.observer.observe(e,this.config)}}]),e}();t.default=u},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function e(){n(this,e);var t=["libraries/assets/styles.css","http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];t.forEach(function(e){var t=document.createElement("link");t.rel="stylesheet",t.type="text/css",t.media="screen",t.href=e,document.getElementsByTagName("head")[0].appendChild(t)})};t.default=r},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function");
-}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var l=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=n(4),c=r(u),s=n(12),d=r(s),f=n(5),v=r(f),h=n(6),g=r(h),p=n(7),b=r(p),m=n(8),y=r(m),w=n(9),E=r(w),x=n(10),F=r(x),k=function(e){function t(e){a(this,t);var n=o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.templates={},n.rootRef=void 0,n}return i(t,e),l(t,[{key:"create",value:function(e,t){var n=t.type;if(this.templates.hasOwnProperty(n))return this.templates[n](e,t)}},{key:"configure",value:function(e){var t=this;this.rootRef=e,this.setTemplateFor("button",function(e,n){return v.default.create(t,e,n)}),this.setTemplateFor("colorPicker",function(e,n){return g.default.create(t,e,n)}),this.setTemplateFor("range",function(e,n){return b.default.create(t,e,n)}),this.setTemplateFor("slider",function(e,n){return y.default.create(t,e,n)}),this.setTemplateFor("textField",function(e,n){return E.default.create(t,e,n)}),this.setTemplateFor("toggle",function(e,n){return F.default.create(t,e,n)})}},{key:"createControllerFor",value:function(e,t){var n=new d.default(e,t,this.events());return n}},{key:"setTemplateFor",value:function(e,t){return this.templates[e]=t,this}},{key:"root",value:function(){return this.rootRef}}]),t}(c.default);t.default=k}]);
->>>>>>> origin/dev
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ControlPanel = __webpack_require__(1);
+
+	var _ControlPanel2 = _interopRequireDefault(_ControlPanel);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* make class ControlPanel available inside the window */
+	window.ControlPanel = _ControlPanel2.default;
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* ControlPanel */
+
+	var _Builder = __webpack_require__(2);
+
+	var _Builder2 = _interopRequireDefault(_Builder);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Observer = __webpack_require__(21);
+
+	var _Observer2 = _interopRequireDefault(_Observer);
+
+	var _Styles = __webpack_require__(22);
+
+	var _Styles2 = _interopRequireDefault(_Styles);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _controllers = __webpack_require__(8);
+
+	var controllers = _interopRequireWildcard(_controllers);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	  * @classdesc
+	  */
+	var ControlPanel = function () {
+
+	  /**
+	    * @constructor
+	    */
+	  function ControlPanel(theApp, theParams) {
+	    _classCallCheck(this, ControlPanel);
+
+	    var params = _Common2.default.merge({ name: '', width: 400, height: 300, parent: document.body }, theParams);
+
+	    this.app = theApp;
+	    this.name = params.name;
+	    this.styles = new _Styles2.default(this);
+	    this.builder = new _Builder2.default(this);
+	    this.observer = new _Observer2.default(this);
+	    this.events = new _Events2.default(this);
+	    this.controllers = {};
+
+	    /* define the root element */
+	    var root = this.builder.init(params);
+
+	    /* initialize the control-panel and TODO: assign panel to DOM element */
+	    document.getElementById('p5-overlay').appendChild(root);
+
+	    /* setup controller-events */
+	    this.events.configure(root, this.name);
+
+	    /* The minimize/maximize Icon TODO: where should this go? */
+	    // const minimize = createTriangle({points: '-5,-4, 5,-4, 0,4'});
+	    var minimize = (0, _Shapes.createTriangle)({ points: [-5, -4, 5, -4, 0, 4] });
+	    (0, _Builder.setAttributesFor)(minimize, { transform: 'translate(12,12) rotate(0)', class: 'menubar' });
+	    minimize.value = false;
+
+	    (0, _Events.addEventListener)(minimize, _Events2.default.click, function (ev) {
+	      minimize.value = !minimize.value;
+	      var r = minimize.value ? -90 : 0;
+	      var height = minimize.value ? 24 : params.height;
+	      var width = minimize.value ? 64 : params.width;
+	      (0, _Builder.setAttributesFor)(root, { height: height, width: width });
+	      (0, _Builder.setAttributesFor)(minimize, { transform: 'translate(12,12) rotate(' + r + ')' });
+	    });
+
+	    root.appendChild(minimize);
+	  }
+
+	  /**
+	   * @desc
+	   * @param {String} theId
+	   * @param {Object} theParams
+	   * @returns {ControlPanel} self
+	   */
+
+
+	  _createClass(ControlPanel, [{
+	    key: 'create',
+	    value: function create(theId, theParams) {
+	      /* 1. create a new controller */
+	      this.controllers[theId] = this.builder.create(theId, theParams);
+	      /* 2. add observer */
+	      console.log('created controller:', this.controllers[theId], this.controllers);
+	      return this;
+	    }
+
+	    /**
+	     * @desc
+	     * @param {String} theId
+	     * @param {Object} theParams
+	     * @returns {ControlPanel} self
+	     */
+
+	  }, {
+	    key: 'change',
+	    value: function change(theId, theParams) {
+	      var controller = this.controllers[theId]; // FIXME: could be undefined
+	      controller.setState(theParams);
+	      controller.build();
+
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? undefined : _theParams$value;
+
+
+	      if (value !== undefined) {
+	        this.app[controller.id] = controller.getValue();
+	        this.app.controlEvent(_Common2.default.merge(theParams, { id: controller.id }));
+	      }
+	      return this;
+	    }
+
+	    /**
+	     * @desc
+	     * @param {String} theId
+	     * @returns {ControlPanel} self
+	     */
+
+	  }, {
+	    key: 'remove',
+	    value: function remove(theId) {
+	      /*TODO: implement */
+	      console.log("remove", theTarget, "removes theTarget and all children and observers accordingly.");
+	      return this;
+	    }
+
+	    /**
+	     * @desc
+	     * @param {String} theId
+	     */
+
+	  }, {
+	    key: 'print',
+	    value: function print(theId) {
+	      this.controllers[theId].print();
+	    }
+	  }]);
+
+	  return ControlPanel;
+	}();
+
+	exports.default = ControlPanel;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.createElement = exports.setAttributesFor = exports.updateElementFor = exports.buildElementsFor = exports.assignUpdateFor = exports.assignTemplateFor = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _AHelper2 = __webpack_require__(6);
+
+	var _AHelper3 = _interopRequireDefault(_AHelper2);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _controllers = __webpack_require__(8);
+
+	var controllers = _interopRequireWildcard(_controllers);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	  * @classdesc
+	  */
+	var Builder = function (_AHelper) {
+	  _inherits(Builder, _AHelper);
+
+	  function Builder(theBase) {
+	    _classCallCheck(this, Builder);
+
+	    var _this = _possibleConstructorReturn(this, (Builder.__proto__ || Object.getPrototypeOf(Builder)).call(this, theBase));
+
+	    _this.rootRef = undefined;
+	    return _this;
+	  }
+
+	  /**
+	    * @static
+	    * @desc returns the svg namespace used in this project
+	    * @returns {String} svg name space
+	    */
+
+
+	  _createClass(Builder, [{
+	    key: 'create',
+
+
+	    /**
+	      * @desc
+	      * @param {Object} theParams
+	      * @returns {Object} newly created Controller
+	      */
+	    value: function create(theId, theParams) {
+	      var type = theParams.type;
+
+	      if (templates.hasOwnProperty(type)) return templates[type](theId, theParams);
+	    }
+
+	    /**
+	      * @desc initializes the Builder and creates the root element
+	      * @param {Object} theParams the initial parameters passed on from the ControlPanel
+	      * @returns {Object} root element
+	      */
+
+	  }, {
+	    key: 'init',
+	    value: function init(theParams) {
+	      var _this2 = this;
+
+	      // const {top=0, left=0, name='?', position='absolute', background='rgba(0,0,0,0.25)'} = theParams;
+	      var _theParams$name = theParams.name,
+	          name = _theParams$name === undefined ? '?' : _theParams$name,
+	          _theParams$background = theParams.background,
+	          background = _theParams$background === undefined ? 'rgba(0,0,0,0.2)' : _theParams$background;
+
+
+	      var defaultAttributes = {
+	        id: 'cp5-' + name,
+	        class: 'cp5',
+	        style: { background: background } };
+
+	      this.rootRef = setAttributesFor(createElement('svg'), _Common2.default.merge(defaultAttributes, theParams));
+
+	      Object.entries(controllers).forEach(function (v) {
+	        /* v = [name of the Controller class, Controller class function] */
+	        assignUpdateFor(v[0], function (theController, theParams) {
+	          v[1].update(theController, theParams);
+	        });
+	        assignTemplateFor(v[0], function (theId, theParams) {
+	          return v[1].create(_this2, theId, theParams);
+	        });
+	      });
+
+	      return this.rootRef;
+	    }
+
+	    /**
+	      * @desc creates a new controller based on type and parameters
+	      * @param {String} theType the type of controller to be created
+	      * @returns {Object} root element
+	      */
+
+	  }, {
+	    key: 'createControllerFor',
+	    value: function createControllerFor(theId, theType) {
+	      var controller = new _Controller2.default(theId, theType, this.events());
+	      return controller;
+	    }
+
+	    /**
+	      * @desc
+	      * @returns {Object}
+	      */
+
+	  }, {
+	    key: 'root',
+	    value: function root() {
+	      return this.rootRef;
+	    }
+	  }], [{
+	    key: 'svgns',
+	    value: function svgns() {
+	      return 'http://www.w3.org/2000/svg';
+	    }
+	  }]);
+
+	  return Builder;
+	}(_AHelper3.default);
+
+	var templates = {};
+
+	/**
+	  * @desc
+	  * @param {Object} theName
+	  * @param {Object} theFunction
+	  * @returns {Object} self
+	  */
+	var assignTemplateFor = exports.assignTemplateFor = function assignTemplateFor(theName, theFunction) {
+	  templates[theName] = theFunction;
+	};
+
+	var updates = {};
+
+	/**
+	 * [buildController description]
+	 * @param  {[type]} theControllerType [description]
+	 * @param  {[type]} theUpdateFunction [description]
+	 * @return [type]                     [description]
+	 */
+	var assignUpdateFor = exports.assignUpdateFor = function assignUpdateFor(theControllerType, theUpdateFunction) {
+	  updates[theControllerType] = theUpdateFunction;
+	};
+
+	/**
+	  * @desc
+	  * @param {Object} theElement  svg element
+	  * @param {Object} theParams  object with attributes
+	  * @returns {Object} svg element based on type
+	  */
+	var buildElementsFor = exports.buildElementsFor = function buildElementsFor(theController, theParams) {
+	  var type = theController.type;
+	  var attributes = _Common2.default.merge(theController.state, theParams);
+	  var element = updates[type](theController, attributes);
+	  return element;
+	};
+
+	/**
+	  * @desc updates or creates a controller's svg element
+	  * @param {Controller} theController  the controller
+	  * @param {String} theIndex  the index of the svg element
+	  * @param {Function} theFn  a function that will be called to create an svg element
+	  * @param {Object} theParams  the svg element's parameters
+	  */
+	var updateElementFor = exports.updateElementFor = function updateElementFor(theController, theIndex, theFn, theParams) {
+	  var text = theParams.text;
+
+	  /* first check if the svg element for the given controller exists */
+
+	  if (theController.getElement(theIndex) === undefined) {
+	    /* if the element doesn't exist yet, create it by applying theFn and the given parameters */
+	    theController.getElement()[theIndex] = theFn(theParams);
+	    theController.getElement().insertBefore(theController.getElement(theIndex), theController.getElement('area'));
+	  }
+
+	  if (text !== undefined) {
+	    (0, _Shapes.setText)(theController.getElement(theIndex), text);
+	    /* delete text property from theParams, we do not want to add it as an attribute */
+	    delete theParams.text;
+	  }
+
+	  /* then make changes to the controller's attributes where necessary */
+	  setAttributesFor(theController.getElement(theIndex), theParams);
+	};
+
+	/**
+	  * @desc helper function to set attributes of a svg element
+	  * @param {Object} theElement  svg element
+	  * @param {Object} theParams  object with attributes
+	  * @returns {Object}  svg element with attributes changed
+	  */
+	var setAttributesFor = exports.setAttributesFor = function setAttributesFor(theElement, theParams) {
+	  // TODO: transform is a special case here, how should we go about it.
+	  Object.keys(theParams).forEach(function (key) {
+	    theElement.setAttribute(key, _Common2.default.isObject(theParams[key]) ? _Common2.default.objectToString(theParams[key]) : theParams[key]);
+	  });
+	  return theElement;
+	};
+
+	/**
+	  * @desc helper function to creating svg elements
+	  * @param {String} theType the svg type
+	  * @returns {Object} svg element
+	  */
+	var createElement = exports.createElement = function createElement(theType) {
+	  return document.createElementNS(Builder.svgns(), theType);
+	};
+
+	exports.default = Builder;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	  * @classdesc
+	  */
+	var Common = function () {
+	  function Common() {
+	    _classCallCheck(this, Common);
+	  }
+
+	  _createClass(Common, null, [{
+	    key: 'b',
+	    value: function b(o, d) {
+	      return typeof o === 'boolean' ? o : d;
+	    }
+	  }, {
+	    key: 'i',
+	    value: function i(o, d) {
+	      return Math.round(typeof o === 'number' ? o : d);
+	    }
+	  }, {
+	    key: 's',
+	    value: function s(o, d) {
+	      return typeof o === 'string' ? o : d;
+	    }
+	  }, {
+	    key: 'f',
+	    value: function f(o, d) {
+	      return typeof o === 'number' ? o : d;
+	    }
+	  }, {
+	    key: 'constrainValue',
+	    value: function constrainValue(theValue, theMin, theMax) {
+	      return theValue < theMin ? theMin : theValue > theMax ? theMax : theValue;
+	    }
+	  }, {
+	    key: 'inside',
+	    value: function inside(theValue, theMin, theMax) {
+	      return theValue >= theMin && theValue <= theMax;
+	    }
+	  }, {
+	    key: 'outside',
+	    value: function outside(theValue, theMin, theMax) {
+	      return theValue < theMin || theValue > theMax;
+	    }
+	  }, {
+	    key: 'mapValue',
+	    value: function mapValue(theValue, theStart0, theStop0, theStart1, theStop1) {
+	      return theStart1 + (theStop1 - theStart1) * ((theValue - theStart0) / (theStop0 - theStart0));
+	    }
+	  }, {
+	    key: 'objectToString',
+	    value: function objectToString(o) {
+	      var str = '';
+	      Object.keys(o).forEach(function (key) {
+	        str = str + ' ' + key + ':' + o[key] + ';';
+	      });
+	      return str;
+	    }
+	  }, {
+	    key: 'elementToObject',
+	    value: function elementToObject(elem) {
+	      var data = {};
+	      [].forEach.call(elem.attributes, function (attr) {
+	        data[attr.name] = attr.value;
+	      });
+	      return data;
+	    }
+	  }, {
+	    key: 'isObject',
+	    value: function isObject(item) {
+	      return item && (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && !Array.isArray(item) && item !== null;
+	    }
+
+	    /**
+	     * deep merge from  https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
+	     * TODO: multiple sources ...sources
+	     */
+
+	  }, {
+	    key: 'merge',
+	    value: function merge(target, source) {
+	      var _this = this;
+
+	      var output = Object.assign({}, target);
+	      if (this.isObject(target) && this.isObject(source)) {
+	        Object.keys(source).forEach(function (key) {
+	          if (_this.isObject(source[key])) {
+	            if (!(key in target)) Object.assign(output, _defineProperty({}, key, source[key]));else output[key] = _this.merge(target[key], source[key]);
+	          } else {
+	            Object.assign(output, _defineProperty({}, key, source[key]));
+	          }
+	        });
+	      }
+	      return output;
+	    }
+	  }]);
+
+	  return Common;
+	}();
+
+	exports.default = Common;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Events = __webpack_require__(5);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	  * @class
+	  * @classdesc
+	  */
+	var Controller = function () {
+
+	  /**
+	    * @constructor
+	    * @desc creates a Controller object used to build a controller
+	    * @param {Object} theId a unique Id
+	    * @param {String} theType which type of controller will be created
+	    * @param {Object} theBase the reference to the controlpanel the controller belongs to
+	    */
+	  function Controller(theId, theType, theEventHandler) {
+	    var _this = this;
+
+	    _classCallCheck(this, Controller);
+
+	    var id = theId,
+	        type = theType,
+	        events = theEventHandler;
+
+	    this.id = id;
+	    this.type = type;
+	    this.state = {};
+	    this.events = events;
+
+	    /* a svg element that contains all svg elements belonging to this controller  */
+	    this.element = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('g'), { type: type, id: id });
+	    this.element.request = function () {
+	      return _this;
+	    };
+
+	    /* area is a svg element used as overlay to handle mouse and touch input */
+	    this.element.area = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('rect'), { fill: 'rgba(0,0,0,0)' });
+	    this.element.appendChild(this.element.area);
+	  }
+
+	  /**
+	    * @desc
+	    * @param {String} theIndex
+	    * @returns {Object} an svg element
+	    */
+
+
+	  _createClass(Controller, [{
+	    key: 'getElement',
+	    value: function getElement(theIndex) {
+	      return theIndex === undefined ? this.element : this.element[theIndex];
+	    }
+
+	    /**
+	     *
+	     * @return Events
+	     */
+
+	  }, {
+	    key: 'getEventHandler',
+	    value: function getEventHandler() {
+	      return this.events;
+	    }
+
+	    /**
+	     * [getValue description]
+	     * @return {Object} [description]
+	     */
+
+	  }, {
+	    key: 'getValue',
+	    value: function getValue() {
+	      return this.state.value;
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theIndex
+	      * @returns {Object} a specific controller attribute
+	      */
+
+	  }, {
+	    key: 'getStateFor',
+	    value: function getStateFor(theIndex) {
+	      return this.state[theIndex];
+	    }
+	  }, {
+	    key: 'getState',
+	    value: function getState() {
+	      return this.state;
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theParams
+	      * @returns {Object} self
+	      */
+
+	  }, {
+	    key: 'setState',
+	    value: function setState(theParams) {
+	      this.state = _Common2.default.merge(this.state, theParams);
+	      return this;
+	    }
+	  }, {
+	    key: 'removeStateFor',
+	    value: function removeStateFor(theKey) {
+	      delete this.state[theKey];
+	      return this;
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theEvent
+	      * @param {Object} theParams
+	      * @returns {Object} self
+	      */
+
+	  }, {
+	    key: 'addEventFor',
+	    value: function addEventFor(theEvent, theParams) {
+	      var _this2 = this;
+
+	      Object.keys(theParams).forEach(function (key) {
+	        (0, _Events.addEventListener)(_this2.getElement('area'), theEvent, function (input) {
+	          var params = _Common2.default.merge({}, theParams[key]);
+	          var element = params['element'];
+	          var event = params['event'];
+	          var get = params['get'];
+	          params['element'] = element === undefined ? _this2.getElement() : _this2.getElement(element);
+	          params['event'] = event === undefined ? input : getEvent(event);
+	          params['inputValue'] = get === undefined ? 0 : input[get];
+	          (0, _Events.callEventFor)(key)(_this2.getEventHandler(), _this2, params); /* FIXME: call Events.apply() here instead. */
+	        });
+	      });
+	      return this;
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theParent
+	      * @returns {Object} self
+	      */
+	    /* FIXME: make sure we don't allow this to be called more than once to avoid multiple parents */
+
+	  }, {
+	    key: 'setParent',
+	    value: function setParent(theParent) {
+	      theParent.appendChild(this.getElement());
+	      return this;
+	    }
+
+	    /**
+	      * @desc
+	      * @returns {Object}
+	      */
+
+	  }, {
+	    key: 'build',
+	    value: function build() {
+	      var _state = this.state,
+	          width = _state.width,
+	          height = _state.height,
+	          x = _state.x,
+	          y = _state.y,
+	          r = _state.r;
+
+	      (0, _Builder.setAttributesFor)(this.getElement(), { transform: 'translate(' + x + ',' + y + ')', width: width, height: height });
+	      (0, _Builder.buildElementsFor)(this, this.state);
+	    }
+	  }, {
+	    key: 'print',
+	    value: function print() {
+	      console.log(this.getElement(), this.state);
+	    }
+	  }]);
+
+	  return Controller;
+	}();
+
+	exports.default = Controller;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addEventListener = exports.callEventFor = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _AHelper2 = __webpack_require__(6);
+
+	var _AHelper3 = _interopRequireDefault(_AHelper2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	  * @classdesc
+	  */
+	var Event = function (_AHelper) {
+	  _inherits(Event, _AHelper);
+
+	  /**
+	    * @constructor
+	    */
+	  function Event(theBase) {
+	    _classCallCheck(this, Event);
+
+	    var _this = _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).call(this, theBase));
+
+	    _this.dragTarget = undefined;
+	    _this.viewTarget = undefined;
+	    return _this;
+	  }
+
+	  /**
+	    * @desc
+	    * @param {Object} theRoot
+	    */
+
+
+	  _createClass(Event, [{
+	    key: 'configure',
+	    value: function configure(theRoot, theName) {
+	      var _this2 = this;
+
+	      /* prevent Event to be configured multiple times */
+	      if (this.viewTarget !== undefined) return;
+
+	      this.viewTarget = document;
+
+	      /* window events */
+	      addEventListener(window, Event.resize, function (event) {});
+
+	      /* mouse events */
+
+	      /* call events when the mouse is moved, in case a drag-target is defined, call drag */
+	      addEventListener(this.viewTarget, Event.mouseMove, function (event) {
+	        if (_this2.dragTarget === undefined) return;
+	        _this2.dragTarget.params['event'] = event;
+	        _this2.apply(_this2.dragTarget.controller, 'drag', _this2.dragTarget.params);
+	      });
+
+	      /* when the mouse is up, release the drag-target */
+	      addEventListener(this.viewTarget, Event.mouseUp, function (event) {
+	        _this2.apply(_this2.dragTarget !== undefined ? _this2.dragTarget.controller : undefined, 'stopDrag', { event: event });
+	      });
+
+	      /* wheel events */
+	      var wheel = function wheel() {
+	        return Event.onWheel in _this2.viewTarget ? Event.wheel : Event.mouseWheel;
+	      };
+	      addEventListener(theRoot, wheel(), function (event) {
+	        event.preventDefault();
+	      });
+
+	      /* TODO: key events */
+	      // addEventListener(this.viewTarget, Event.keyUp, event => {this.handleKeyEvent(Event.keyUp, event);});
+	      // addEventListener(this.viewTarget, Event.keyPress, event => {this.handleKeyEvent(Event.keyPressed, event);});
+
+
+	      /* TODO: touch events, for mobile devices */
+	      /* NOTE: how to extract touch info, see https://github.com/processing/p5.js/blob/master/src/events/touch.js */
+
+	      /* when a touch-event is detected, treat as mouseDown. */
+	      addEventListener(this.viewTarget, Event.touchStart, function (event) {
+	        _this2.apply(_this2.dragTarget !== undefined ? _this2.dragTarget.controller : undefined, 'stopDrag', { event: event });
+	      }, true);
+
+	      /* when a touch-pointer is moved, treat as mouseMove. Only use 1 touch-pointer, ignore the others. */
+	      addEventListener(theRoot, Event.touchMove, function (event) {
+	        _this2.base().app.a = event.clientX;
+	        event.preventDefault();
+	      });
+
+	      /* when a touch-event ends, do ... */
+	      addEventListener(this.viewTarget, Event.touchEnd, function (event) {
+	        _this2.apply(_this2.dragTarget !== undefined ? _this2.dragTarget.controller : undefined, 'stopDrag', { event: event });
+	      });
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theName
+	      * @param {Object} theFunction
+	      * @returns {Object} self
+	      */
+
+	  }, {
+	    key: 'set',
+	    value: function set(theEvent, theFunction) {
+	      setEvent(theEvent, theFunction);
+	      return this;
+	    }
+
+	    /**
+	      * @desc request an event
+	      * @param {Object} theEvent
+	      * @returns {Object} an event function from the pool of events
+	      */
+
+	  }, {
+	    key: 'get',
+	    value: function get(theEvent) {
+	      return events[theEvent] || function () {
+	        console.log('Event', theEvent, 'does not exist.');
+	      };
+	    }
+
+	    /**
+	      * @desc
+	      * @param {Object} theController
+	      * @param {Object} theEvent
+	      * @param {Object} theParams
+	      * @returns {Object} self
+	      */
+
+	  }, {
+	    key: 'apply',
+	    value: function apply(theController, theEvent, theParams) {
+	      events[theEvent](this, theController, theParams);
+	      return this;
+	    }
+
+	    /* FIXME: EXPERIMENTAL checks all elements for mouse-over when key is pressed,
+	     * then finds the most-top one and changes the text of its label.
+	     * uses Controller.element.request() to access the Controller assigned to the element. */
+
+	  }, {
+	    key: 'handleKeyEvent',
+	    value: function handleKeyEvent(theEventType, theEvent) {
+	      /* gather all elements that are under the mouse pointer when a key gets pressed */
+	      var arr = [].concat(_toConsumableArray(document.querySelectorAll(":hover")));
+	      /* check if we are dealing with an svg element */
+	      if (!!arr.filter(function (el) {
+	        return el.nodeName === 'svg';
+	      }).filter(function (el) {
+	        return el === theRoot;
+	      }).length) {
+	        /* check if the element implements request */
+	        var target = arr.filter(function (el) {
+	          return el.request !== undefined;
+	        });
+	        /* if this is the case and the target is not empty, then reduce the target and request it */
+	        if (!!target.length) target.reduce(function (el) {
+	          return el;
+	        }).request().change({ label: 'hello' });
+	      }
+	    }
+	  }]);
+
+	  return Event;
+	}(_AHelper3.default);
+
+	var events = {};
+
+	var setEvent = function setEvent(theEvent, theFunction) {
+	  events[theEvent] = theFunction;
+	};
+
+	var callEventFor = exports.callEventFor = function callEventFor(theEvent) {
+	  return events[theEvent];
+	};
+
+	/**
+	  * @desc
+	  * @param {Object} theElement
+	  * @param {String} theType
+	  * @param {Function} theCallback
+	  */
+	var addEventListener = exports.addEventListener = function addEventListener(theElement, theType, theCallback) {
+	  var theFlag = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+	  if (theElement.addEventListener) {
+	    theElement.addEventListener(theType, theCallback, theFlag);
+	  } else if (theElement.attachEvent) {
+	    theElement.attachEvent('on' + theType, theCallback);
+	  }
+	};
+
+	/* setup default events */
+
+	/**
+	 * [dragTarget description]
+	 * @type {Object}
+	 */
+	setEvent('call', function (theEventHandler, theController, theParams) {
+	  var fn = theParams.fn;
+
+	  fn(theEventHandler, theController, theParams);
+	});
+
+	/**
+	 * [dragTarget description]
+	 * @type {Object}
+	 */
+	setEvent('startDrag', function (theEventHandler, theController, theParams) {
+	  theEventHandler.dragTarget = { controller: theController, params: theParams };
+	});
+
+	/**
+	 * [dragTarget description]
+	 * @type {[type]}
+	 */
+	setEvent('stopDrag', function (theEventHandler, theController, theParams) {
+	  theEventHandler.dragTarget = undefined; /* FIXME: should not be undefined but an empty controller */
+	});
+
+	/**
+	 * [v0 description]
+	 * @type {[type]}
+	 */
+	setEvent('drag', function (theEventHandler, theController, theParams) {
+	  var then = theParams.then,
+	      get = theParams.get;
+
+	  theParams['inputValue'] = get !== undefined ? theParams.event[get] : 0;
+	  callEventFor(then)(theEventHandler, theController, theParams);
+	});
+
+	/**
+	 * [v0 description]
+	 * @type {[type]}
+	 */
+	setEvent('preventDefault', function (theEventHandler, theController, theParams) {
+	  var event = theParams.event;
+
+	  event.preventDefault();
+	});
+
+	/**
+	 * [v0 description]
+	 * @type {[type]}
+	 */
+	setEvent('sliderDown', function (theEventHandler, theController, theParams) {
+	  var event = theParams.event,
+	      element = theParams.element;
+	  var _theController$state = theController.state,
+	      min = _theController$state.min,
+	      max = _theController$state.max,
+	      width = _theController$state.width;
+
+	  var pointer = event.clientX - element.area.getBoundingClientRect().left;
+	  var v0 = _Common2.default.mapValue(pointer, 0, width, min, max);
+	  var value = _Common2.default.constrainValue(v0, min, max);
+	  theEventHandler.base().change(theController.id, { value: value });
+	});
+
+	/**
+	 * [v0 description]
+	 * @type {[type]}
+	 */
+	setEvent('sliderDrag', function (theEventHandler, theController, theParams) {
+	  var event = theParams.event,
+	      inputValue = theParams.inputValue;
+	  var _theController$state2 = theController.state,
+	      min = _theController$state2.min,
+	      max = _theController$state2.max,
+	      width = _theController$state2.width,
+	      val = _theController$state2.value;
+
+	  var v0 = val + _Common2.default.mapValue(inputValue, 0, width, 0, max - min);
+	  var value = _Common2.default.constrainValue(v0, min, max);
+	  theEventHandler.base().change(theController.id, { value: value });
+	});
+
+	/**
+	 * [v0 description]
+	 * @type {[type]}
+	 */
+	setEvent('rangeDown', function (theEventHandler, theController, theParams) {
+	  var event = theParams.event,
+	      element = theParams.element;
+	  var _theController$state3 = theController.state,
+	      min = _theController$state3.min,
+	      max = _theController$state3.max,
+	      value = _theController$state3.value,
+	      width = _theController$state3.width,
+	      handleWidth = _theController$state3.handleWidth;
+
+	  var left = _Common2.default.mapValue(value.min, min, max, handleWidth, width - handleWidth);
+	  var right = _Common2.default.mapValue(value.max, min, max, handleWidth, width - handleWidth);
+	  var pointer = event.clientX - element.area.getBoundingClientRect().left;
+	  var which = _Common2.default.inside(pointer, left - handleWidth, left) ? 'left' : _Common2.default.inside(pointer, right, right + handleWidth) ? 'right' : !_Common2.default.outside(pointer, left, right) ? 'center' : undefined;
+	  theEventHandler.dragTarget['applyTo'] = which;
+	});
+
+	/**
+	 * [setEvent description]
+	 * @param {[type]} rangeDrag       [description]
+	 * @param {[type]} theEventHandler [description]
+	 * @param {[type]} inputValue      [description]
+	 * @param {[type]} min             [description]
+	 * @param {[type]} max             [description]
+	 * @param {[type]} value           [description]
+	 */
+	setEvent('rangeDrag', function (theEventHandler, theController, theParams) {
+	  var event = theParams.event,
+	      inputValue = theParams.inputValue;
+	  var _theController$state4 = theController.state,
+	      width = _theController$state4.width,
+	      minValue = _theController$state4.min,
+	      maxValue = _theController$state4.max,
+	      val = _theController$state4.value;
+
+	  var range = val.max - val.min;
+	  var dist = _Common2.default.mapValue(inputValue, 0, width, 0, maxValue - minValue);
+	  var applyTo = theEventHandler.dragTarget === undefined ? 'scroll' : theEventHandler.dragTarget.applyTo;
+
+	  switch (applyTo) {
+	    case 'center':
+	    case 'scroll':
+	      {
+	        var min = _Common2.default.constrainValue(val.min + dist, minValue, maxValue - range);
+	        var max = min + range;
+	        theEventHandler.base().change(theController.id, { value: { min: min, max: max } });
+	      }
+	      break;
+	    case 'left':
+	      {
+	        var _min = _Common2.default.constrainValue(val.min + dist, minValue, val.max);
+	        theEventHandler.base().change(theController.id, { value: { min: _min } });
+	      }
+	      break;
+	    case 'right':
+	      {
+	        var _max = _Common2.default.constrainValue(val.max + dist, val.min, maxValue);
+	        theEventHandler.base().change(theController.id, { value: { max: _max } });
+	      }
+	      break;
+	  }
+	});
+
+	/**
+	 * [hover description]
+	 * @type {[type]}
+	 */
+	setEvent('hover', function (theEventHandler, theController, theParams) {
+	  var is = theParams.is;
+
+	  theEventHandler.base().change(theController.id, { hover: is });
+	});
+
+	Event.change = 'change';
+	Event.blur = 'blur';
+	Event.click = 'click';
+	Event.focus = 'focus';
+	Event.keyDown = 'keydown';
+	Event.keyPress = 'keypress';
+	Event.keyUp = 'keyup';
+	Event.mouseDown = 'mousedown';
+	Event.mouseEnter = 'mouseenter';
+	Event.mouseLeave = 'mouseleave';
+	Event.mouseMove = 'mousemove';
+	Event.mouseUp = 'mouseup';
+	Event.mouseWheel = 'mousewheel';
+	Event.onWheel = 'onwheel';
+	Event.resize = 'resize';
+	Event.touchEnd = 'touchend';
+	Event.touchMove = 'touchmove';
+	Event.touchStart = 'touchstart';
+	Event.wheel = 'wheel';
+
+	exports.default = Event;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var AHelper = function () {
+	  function AHelper(theBase) {
+	    _classCallCheck(this, AHelper);
+
+	    this.baseRef = theBase;
+	  }
+
+	  /**
+	    * @desc
+	    * @returns {ControlPanel}
+	    */
+
+
+	  _createClass(AHelper, [{
+	    key: "base",
+	    value: function base() {
+	      return this.baseRef;
+	    }
+
+	    /**
+	      * @desc
+	      * @returns {Builder}
+	      */
+
+	  }, {
+	    key: "builder",
+	    value: function builder() {
+	      return this.baseRef.builder;
+	    }
+
+	    /**
+	      * @desc
+	      * @returns {Events}
+	      */
+
+	  }, {
+	    key: "events",
+	    value: function events() {
+	      return this.baseRef.events;
+	    }
+
+	    /**
+	      * @desc
+	      * @returns {Object}
+	      */
+
+	  }, {
+	    key: "properties",
+	    value: function properties() {
+	      return this.baseRef.properties;
+	    }
+	  }]);
+
+	  return AHelper;
+	}();
+
+	exports.default = AHelper;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.setText = exports.createCanvas = exports.createChart = exports.createTriangle = exports.createInput = exports.createCircle = exports.createLabel = exports.createRect = undefined;
+
+	var _Builder = __webpack_require__(2);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	  * @desc helper function to create a svg rectangle
+	  * @param {Object} theParams  the parameters to be used to style the rectangle
+	  * @returns {Object} svg rect with attributes added
+	  */
+	var createRect = exports.createRect = function createRect(theParams) {
+	  var _theParams$width = theParams.width,
+	      width = _theParams$width === undefined ? 100 : _theParams$width,
+	      _theParams$height = theParams.height,
+	      height = _theParams$height === undefined ? 100 : _theParams$height,
+	      _theParams$rx = theParams.rx,
+	      rx = _theParams$rx === undefined ? 0 : _theParams$rx,
+	      _theParams$ry = theParams.ry,
+	      ry = _theParams$ry === undefined ? 0 : _theParams$ry;
+
+	  var defaultAttributes = { width: width, height: height, rx: rx, ry: ry };
+	  var shape = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('rect'), _Common2.default.merge(defaultAttributes, theParams));
+	  return shape;
+	};
+
+	/**
+	  * @desc helper function to create a svg text element
+	  * @param {Object} theParams  the parameters to be used to style a text label
+	  * @returns {Object} svg text with attributes added
+	  */
+	var createLabel = exports.createLabel = function createLabel(theParams) {
+	  var _theParams$textAnchor = theParams.textAnchor,
+	      textAnchor = _theParams$textAnchor === undefined ? 'start' : _theParams$textAnchor,
+	      _theParams$alignmentB = theParams.alignmentBaseline,
+	      alignmentBaseline = _theParams$alignmentB === undefined ? 'central' : _theParams$alignmentB,
+	      text = theParams.text;
+
+	  var defaultAttributes = { 'alignment-baseline': alignmentBaseline, 'text-anchor': textAnchor };
+	  delete theParams.text;
+	  var label = (0, _Builder.setAttributesFor)(setText((0, _Builder.createElement)('text'), text), _Common2.default.merge(defaultAttributes, theParams));
+	  return label;
+	};
+
+	/**
+	 * @desc
+	 * @param  {Object} theParams
+	 * @returns {Object}
+	 */
+	var createCircle = exports.createCircle = function createCircle(theParams) {
+	  var _theParams$r = theParams.r,
+	      r = _theParams$r === undefined ? 20 : _theParams$r,
+	      _theParams$cx = theParams.cx,
+	      cx = _theParams$cx === undefined ? 20 : _theParams$cx,
+	      _theParams$cy = theParams.cy,
+	      cy = _theParams$cy === undefined ? 20 : _theParams$cy;
+
+	  var defaultAttributes = { r: r, cx: cx, cy: cy };
+	  var shape = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('circle'), _Common2.default.merge(defaultAttributes, theParams));
+	  return shape;
+	};
+
+	/* TODO implement triangle */
+	var createInput = exports.createInput = function createInput(theParams) {
+	  var _theParams$x = theParams.x,
+	      x = _theParams$x === undefined ? 0 : _theParams$x,
+	      _theParams$y = theParams.y,
+	      y = _theParams$y === undefined ? 0 : _theParams$y,
+	      _theParams$width2 = theParams.width,
+	      width = _theParams$width2 === undefined ? 100 : _theParams$width2,
+	      _theParams$height2 = theParams.height,
+	      height = _theParams$height2 === undefined ? 20 : _theParams$height2;
+
+	  var defaultAttributes = { x: x, y: y, width: width, height: height };
+	  console.log('createInput', defaultAttributes);
+	  var blur = function blur(target) {
+	    (0, _Builder.setAttributesFor)(target, { contenteditable: 'false' });
+	  };
+	  var shape = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('foreignObject'), _Common2.default.merge(defaultAttributes, theParams));
+	  var div = (0, _Builder.setAttributesFor)(document.createElement('div'), {
+	    class: 'single',
+	    xmlns: 'http://www.w3.org/1999/xhtml' });
+	  var span = (0, _Builder.setAttributesFor)(document.createElement('span'), {
+	    onblur: 'this.setAttribute("contenteditable", false)',
+	    style: 'font-size:20px; color:rgba(255,255,255,1); line-height: normal; height: ' + height + 'px',
+	    contenteditable: 'false' });
+	  div.appendChild(span);
+	  shape.appendChild(div);
+	  return shape;
+	};
+
+	/* TODO implement triangle */
+	var createTriangle = exports.createTriangle = function createTriangle(theParams) {
+	  var _theParams$points = theParams.points,
+	      points = _theParams$points === undefined ? [0, 0, 100, 0, 50, 100] : _theParams$points;
+
+	  var defaultAttributes = { points: points };
+	  var shape = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('polygon'), _Common2.default.merge(defaultAttributes, theParams));
+	  return shape;
+	};
+
+	/* TODO implement chart */
+	var createChart = exports.createChart = function createChart(theParams) {
+	  var chart = (0, _Builder.createElement)('svg');
+	  var line = (0, _Builder.createElement)('polyline');
+	  return chart;
+	};
+
+	/* TODO implement canvas */
+	var createCanvas = exports.createCanvas = function createCanvas(theParams) {};
+
+	/**
+	 * [setText description]
+	 * @param {[type]} theElem [description]
+	 * @param {[type]} theText [description]
+	 */
+	var setText = exports.setText = function setText(theElem, theText) {
+	  theElem.innerHTML = theText;
+	  return theElem;
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Toggle = exports.TextField = exports.Slider = exports.Range = exports.ColorPicker = exports.Chart = exports.Button = undefined;
+
+	var _Button = __webpack_require__(9);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
+	var _ButtonBar = __webpack_require__(10);
+
+	var _ButtonBar2 = _interopRequireDefault(_ButtonBar);
+
+	var _Chart = __webpack_require__(11);
+
+	var _Chart2 = _interopRequireDefault(_Chart);
+
+	var _ColorPicker = __webpack_require__(12);
+
+	var _ColorPicker2 = _interopRequireDefault(_ColorPicker);
+
+	var _Knob = __webpack_require__(13);
+
+	var _Knob2 = _interopRequireDefault(_Knob);
+
+	var _NumberBox = __webpack_require__(14);
+
+	var _NumberBox2 = _interopRequireDefault(_NumberBox);
+
+	var _RadioButton = __webpack_require__(15);
+
+	var _RadioButton2 = _interopRequireDefault(_RadioButton);
+
+	var _Range = __webpack_require__(16);
+
+	var _Range2 = _interopRequireDefault(_Range);
+
+	var _Slider = __webpack_require__(17);
+
+	var _Slider2 = _interopRequireDefault(_Slider);
+
+	var _TextField = __webpack_require__(18);
+
+	var _TextField2 = _interopRequireDefault(_TextField);
+
+	var _TextLabel = __webpack_require__(19);
+
+	var _TextLabel2 = _interopRequireDefault(_TextLabel);
+
+	var _Toggle = __webpack_require__(20);
+
+	var _Toggle2 = _interopRequireDefault(_Toggle);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.Button = _Button2.default;
+	exports.Chart = _Chart2.default;
+	exports.ColorPicker = _ColorPicker2.default;
+	exports.Range = _Range2.default;
+	exports.Slider = _Slider2.default;
+	exports.TextField = _TextField2.default;
+	exports.Toggle = _Toggle2.default;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Button = function () {
+	  function Button() {
+	    _classCallCheck(this, Button);
+	  }
+
+	  _createClass(Button, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+	      /* 1. set default parameters*/
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? 1 : _theParams$value,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height;
+
+	      /* 2. create a Controller object */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. initialize the controller's state and events, also assign it's parent */
+	      controller.setState(_Common2.default.merge({ value: value, width: width, height: height, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.click, { call: { fn: function fn(e, c, p) {
+	            console.log('hello click', c);
+	          } } }).addEventFor(_Events2.default.mouseDown, { call: { fn: function fn(e, c, p) {
+	            (0, _Builder.setAttributesFor)(c.getElement('bg'), { class: Button.active });
+	          } } }).addEventFor(_Events2.default.mouseUp, { call: { fn: function fn(e, c, p) {
+	            (0, _Builder.setAttributesFor)(c.getElement('bg'), { class: Button.hover });
+	          } } }).addEventFor(_Events2.default.mouseEnter, { hover: { is: true } }).addEventFor(_Events2.default.mouseLeave, { hover: { is: false } }).setParent(theBuilder.root()).build();
+
+	      /* 4. after building is completed, return the controller */
+	      return controller;
+	    }
+
+	    /**
+	     * A controller is updated when changes are made
+	     * @param  {Controller} theController [description]
+	     * @param  {Object} theParams         [description]
+	     * @return Controller                 [description]
+	     */
+
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          label = theParams.label,
+	          hover = theParams.hover,
+	          option = theParams.option,
+	          icon = theParams.icon,
+	          _theParams$rx = theParams.rx,
+	          rx = _theParams$rx === undefined ? 4 : _theParams$rx,
+	          _theParams$ry = theParams.ry,
+	          ry = _theParams$ry === undefined ? 4 : _theParams$ry;
+
+	      var c0 = hover ? Button.hover : Button.normal;
+	      var x = width / 2;
+	      var y = height / 2;
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: c0, rx: rx, ry: ry });
+	      switch (option) {
+	        case 'icon':
+	          (0, _Builder.updateElementFor)(theController, 'icon', _Shapes.createLabel, { x: x, y: y, textAnchor: 'middle', class: Button.icon, text: icon });
+	          break;
+	        default:
+	          (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: x, y: y, textAnchor: 'middle', class: Button.label, text: label });
+	      }
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Button;
+	}();
+
+	Button.normal = 'button bg';
+	Button.hover = 'button fg';
+	Button.active = 'button active';
+	Button.label = 'button label';
+	Button.icon = 'button icon';
+
+	exports.default = Button;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	/* TODO */
+	"use strict";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* TODO */
+
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Chart = function () {
+	  function Chart() {
+	    _classCallCheck(this, Chart);
+	  }
+
+	  _createClass(Chart, null, [{
+	    key: 'create',
+	    value: function create(theBuilder, theId, theParams) {
+	      /* 1. configure default parameters first */
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? [] : _theParams$value,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 50 : _theParams$height;
+
+	      /* 2. create a new controller of type slider */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state for the slider */
+	      controller.setState(_Common2.default.merge({ value: value, width: width, height: height, x: x, y: y }, theParams)).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+	  }, {
+	    key: 'test',
+	    value: function test() {
+	      console.log("testing static call");
+	    }
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          label = theParams.label,
+	          option = theParams.option,
+	          value = theParams.value;
+
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: 'chart bg' });
+	      (0, _Builder.updateElementFor)(theController, 'chart', _Shapes.createChart, { width: width, height: height, value: value });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Chart;
+	}();
+
+	exports.default = Chart;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var ColorPicker = function () {
+	  function ColorPicker() {
+	    _classCallCheck(this, ColorPicker);
+	  }
+
+	  _createClass(ColorPicker, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+	      /* 1. configure default parameters first */
+	      var _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height,
+	          _theParams$spacing = theParams.spacing,
+	          spacing = _theParams$spacing === undefined ? 10 : _theParams$spacing,
+	          _theParams$pickerHeig = theParams.pickerHeight,
+	          pickerHeight = _theParams$pickerHeig === undefined ? 100 : _theParams$pickerHeig,
+	          _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? [255, 0, 0, 255] : _theParams$value,
+	          _theParams$hue = theParams.hue,
+	          hue = _theParams$hue === undefined ? [255, 255, 255, 255] : _theParams$hue;
+
+	      /* 2. create a new controller of type button */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state, events, parent for the button */
+	      controller.setState(_Common2.default.merge({ value: value, hue: hue, width: width, height: height, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.click, { call: { fn: ColorPicker.togglePicker } }).addEventFor(_Events2.default.mouseEnter, { hover: { is: true } }).addEventFor(_Events2.default.mouseLeave, { hover: { is: false } }).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+
+	    /**
+	     * [togglePicker description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+
+	  }, {
+	    key: 'togglePicker',
+	    value: function togglePicker(theEventHandler, theController) {
+
+	      var k0 = 'picker';
+
+	      /* the root element of the ControlPanel
+	       * the color-picker, when opened, will be rendered on top of all other elements */
+	      var root = theController.element.nearestViewportElement;
+
+	      /* v0 is either undefined or a foreignObject element */
+	      var v0 = theController.getStateFor(k0);
+
+	      /* if v0 is undefined, lets open the picker */
+	      if (v0 === undefined) {
+	        (function () {
+
+	          /* local parameters we will need */
+	          var params = {
+	            x: theController.getStateFor('x') || 0,
+	            y: theController.getStateFor('y') + theController.getStateFor('height') || 20,
+	            width: theController.getStateFor('width') || 200,
+	            height: theController.getStateFor('pickerHeight') || 100,
+	            spacing: theController.getStateFor('spacing') || 10,
+	            hue: theController.getStateFor('hue')
+	          };
+
+	          /* create a foreignObject to store a canvas */
+	          var f0 = (0, _Builder.setAttributesFor)((0, _Builder.createElement)('foreignObject'), params);
+
+	          /* create a canvas that we can use to render colors in HSB */
+	          var canvas = (0, _Builder.setAttributesFor)(document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas'), params);
+
+	          /* add the canvas to the foreignObject */
+	          f0.appendChild(canvas);
+
+	          /* on click, change color */
+	          (0, _Events.addEventListener)(canvas, _Events2.default.click, function (event) {
+	            ColorPicker.changeColorFor(theController, theEventHandler, canvas, _Common2.default.merge(params, { sx: event.layerX, sy: event.layerY }));
+	          });
+
+	          /* when dragging the mouse inside the foreignObject, update color */
+	          (0, _Events.addEventListener)(canvas, _Events2.default.mouseMove, function (event) {
+	            if (event.buttons !== 0) {
+	              ColorPicker.changeColorFor(theController, theEventHandler, canvas, _Common2.default.merge(params, { sx: event.layerX, sy: event.layerY }));
+	            }
+	          });
+
+	          /* an outside click will close the foreignObject */
+	          (0, _Events.addEventListener)(f0, _Events2.default.blur, function (event) {
+	            ColorPicker.togglePicker(theEventHandler, theController);
+	          });
+
+	          /* add the foreignObject to the ColorPicker object and set focus */
+	          theEventHandler.base().change(theController.id, _defineProperty({}, k0, f0));
+	          root.appendChild(f0);
+	          f0.focus();
+
+	          /* render the color spectrum*/
+	          ColorPicker.renderColorInto(canvas, params);
+	        })();
+	      } else {
+	        /* remove */
+	        root.removeChild(v0);
+	        theController.removeStateFor(k0);
+	      }
+	    }
+	  }, {
+	    key: 'changeColorFor',
+
+
+	    /**
+	     * [changeColorFor description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theElement    [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+	    value: function changeColorFor(theController, theEventHandler, theElement, theParams) {
+
+	      /* render the color spectrum*/
+	      var hue = theController.getStateFor('hue');
+	      var ctx = ColorPicker.renderColorInto(theElement, _Common2.default.merge(theParams, { hue: hue }));
+
+	      /* check the color under the cursor */
+	      var selectedColor = [].concat(_toConsumableArray(ctx.getImageData(theParams.sx, theParams.sy, 1, 1).data));
+
+	      if (theParams.sx < theParams.spacing) {
+	        /* select a new hue value */
+	        ColorPicker.renderColorInto(theElement, _Common2.default.merge(theParams, { hue: selectedColor }));
+	        theEventHandler.base().change(theController.id, { hue: selectedColor });
+	      } else {
+	        /* otherwise change the brightness/saturation based on the color selected */
+	        var style = 'fill: rgba(' + selectedColor[0] + ', ' + selectedColor[1] + ', ' + selectedColor[2] + ', 1.0)';
+	        (0, _Builder.setAttributesFor)(theController.getElement().childNodes[0], { style: style });
+	        theEventHandler.base().change(theController.id, { value: selectedColor });
+	      }
+	    }
+	  }, {
+	    key: 'update',
+
+
+	    /**
+	     * [update description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          label = theParams.label,
+	          hover = theParams.hover;
+
+	      var c0 = hover ? ColorPicker.active : ColorPicker.normal;
+	      var x = width / 2;
+	      var y = height / 2;
+	      (0, _Builder.updateElementFor)(theController, 'fg', _Shapes.createRect, { width: width, height: height, class: c0 });
+	      (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: x, y: y, textAnchor: 'middle', class: ColorPicker.label, text: label });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+
+	    /**
+	     * [renderColorInto description]
+	     * @param  {[type]} theElement [description]
+	     * @param  {[type]} theParams  [description]
+	     * @return [type]              [description]
+	     */
+
+	  }, {
+	    key: 'renderColorInto',
+	    value: function renderColorInto(theElement, theParams) {
+	      var _theParams$hue2 = theParams.hue,
+	          hue = _theParams$hue2 === undefined ? [255, 255, 255, 255] : _theParams$hue2,
+	          _theParams$width2 = theParams.width,
+	          width = _theParams$width2 === undefined ? 200 : _theParams$width2,
+	          _theParams$height2 = theParams.height,
+	          height = _theParams$height2 === undefined ? 100 : _theParams$height2,
+	          _theParams$spacing2 = theParams.spacing,
+	          spacing = _theParams$spacing2 === undefined ? 10 : _theParams$spacing2;
+
+
+	      var ctx = theElement.getContext("2d");
+	      ctx.beginPath();
+	      ctx.rect(0, 0, width, height);
+	      ctx.fillStyle = ColorPicker.toRgba([255, 255, 255, 0.5]);
+	      ctx.fill();
+
+	      ctx.beginPath();
+	      ctx.rect(0, 0, spacing, height);
+	      var spectrum = ctx.createLinearGradient(0, 0, 0, height);
+	      spectrum.addColorStop(0.00, ColorPicker.toRgba([255, 0, 0, 1]));
+	      spectrum.addColorStop(0.17, ColorPicker.toRgba([255, 255, 0, 1]));
+	      spectrum.addColorStop(0.34, ColorPicker.toRgba([0, 255, 0, 1]));
+	      spectrum.addColorStop(0.51, ColorPicker.toRgba([0, 255, 255, 1]));
+	      spectrum.addColorStop(0.68, ColorPicker.toRgba([0, 0, 255, 1]));
+	      spectrum.addColorStop(0.85, ColorPicker.toRgba([255, 0, 255, 1]));
+	      spectrum.addColorStop(1.00, ColorPicker.toRgba([255, 0, 0, 1]));
+	      ctx.fillStyle = spectrum;
+	      ctx.fill();
+
+	      ctx.fillStyle = ColorPicker.toRgba(hue);
+	      ctx.fillRect(spacing, 0, width, height);
+
+	      var white = ctx.createLinearGradient(spacing, 0, width, 0);
+	      white.addColorStop(0, ColorPicker.toRgba([255, 255, 255, 1]));
+	      white.addColorStop(1, ColorPicker.toRgba([255, 255, 255, 0]));
+	      ctx.fillStyle = white;
+	      ctx.fillRect(spacing, 0, width, height);
+
+	      var black = ctx.createLinearGradient(spacing, 0, spacing, height);
+	      black.addColorStop(0, ColorPicker.toRgba([0, 0, 0, 0]));
+	      black.addColorStop(1, ColorPicker.toRgba([0, 0, 0, 1]));
+	      ctx.fillStyle = black;
+	      ctx.fillRect(spacing, 0, width, height);
+	      return ctx;
+	    }
+	  }, {
+	    key: 'toRgba',
+	    value: function toRgba(theColor) {
+	      return 'rgba(' + theColor[0] + ', ' + theColor[1] + ', ' + theColor[2] + ', ' + theColor[3] + ')';
+	    }
+	  }]);
+
+	  return ColorPicker;
+	}();
+
+	ColorPicker.normal = 'colorPicker bg';
+	ColorPicker.hover = 'colorPicker fg';
+	ColorPicker.active = 'colorPicker active';
+	ColorPicker.label = 'colorPicker label';
+
+	exports.default = ColorPicker;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* TODO */
+
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Knob = function () {
+	  function Knob() {
+	    _classCallCheck(this, Knob);
+	  }
+
+	  _createClass(Knob, null, [{
+	    key: 'create',
+	    value: function create(theBuilder, theId, theParams) {
+	      /* 1. configure default parameters first */
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? [] : _theParams$value,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$radius = theParams.radius,
+	          radius = _theParams$radius === undefined ? 20 : _theParams$radius;
+
+	      /* 2. create a new controller of type slider */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state for the slider */
+	      controller.setState(_Common2.default.merge({ value: value, radius: radius, x: x, y: y, r: r }, theParams)).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var radius = theParams.radius,
+	          label = theParams.label,
+	          value = theParams.value;
+
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createCircle, { radius: radius, class: Knob.normal, rx: rx, ry: ry });
+	      (0, _Builder.updateElementFor)(theController, 'fg', createArc, { radius: radius, value: value, class: Knob.hover });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: radius * 2, height: radius * 2, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Knob;
+	}();
+
+	Knob.normal = 'knob bg';
+	Knob.hover = 'knob fg';
+	Knob.active = 'knob active';
+	Knob.label = 'knob label';
+
+	exports.default = Knob;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	/* TODO */
+	"use strict";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	/* TODO */
+	"use strict";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Range = function () {
+	  function Range() {
+	    _classCallCheck(this, Range);
+	  }
+
+	  _createClass(Range, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+	      /* 1. configure default parameters first */
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? { min: 0.25, max: 0.75 } : _theParams$value,
+	          _theParams$min = theParams.min,
+	          min = _theParams$min === undefined ? 0 : _theParams$min,
+	          _theParams$max = theParams.max,
+	          max = _theParams$max === undefined ? 1 : _theParams$max,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height,
+	          _theParams$handleWidt = theParams.handleWidth,
+	          handleWidth = _theParams$handleWidt === undefined ? 10 : _theParams$handleWidt;
+
+	      /* 2. create a new controller of type slider */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state for the range, order matters! see mouseDown.
+	       * startDrag needs to be called before RangeDown so that dragTarget gets initialized. */
+	      controller.setState(_Common2.default.merge({ value: value, min: min, max: max, width: width, height: height, handleWidth: handleWidth, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.wheel, { rangeDrag: { get: 'deltaY' } }).addEventFor(_Events2.default.mouseDown, { startDrag: { then: 'rangeDrag', get: 'movementX' }, rangeDown: {} }).addEventFor(_Events2.default.mouseEnter, { hover: { is: true } }).addEventFor(_Events2.default.mouseLeave, { hover: { is: false } }).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+
+	    /**
+	     * [build description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          label = theParams.label,
+	          value = theParams.value,
+	          min = theParams.min,
+	          max = theParams.max,
+	          hover = theParams.hover,
+	          handleWidth = theParams.handleWidth;
+
+	      var v0 = _Common2.default.mapValue(value.min, min, max, handleWidth, width - handleWidth);
+	      var v1 = _Common2.default.mapValue(value.max, min, max, handleWidth, width - handleWidth);
+	      var w0 = v1 - v0;
+	      var valueMin = value.min.toFixed(2);
+	      var valueMax = value.max.toFixed(2);
+	      var c0 = hover ? Range.active : Range.hover;
+	      var spacing = 4;
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: Range.normal });
+	      (0, _Builder.updateElementFor)(theController, 'fg', _Shapes.createRect, { x: v0, width: w0, height: height, class: c0 });
+	      (0, _Builder.updateElementFor)(theController, 'min', _Shapes.createRect, { x: v0 - handleWidth, width: handleWidth, height: height, class: Range.hover });
+	      (0, _Builder.updateElementFor)(theController, 'max', _Shapes.createRect, { x: v1, width: handleWidth, height: height, class: Range.hover });
+	      (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + spacing, y: height / 2, 'text-anchor': 'start', class: Range.label, text: label });
+	      (0, _Builder.updateElementFor)(theController, 'labelMin', _Shapes.createLabel, { x: spacing, y: height / 2, 'text-anchor': 'start', class: Range.label, text: valueMin });
+	      (0, _Builder.updateElementFor)(theController, 'labelMax', _Shapes.createLabel, { x: width - spacing, y: height / 2, 'text-anchor': 'end', class: Range.label, text: valueMax });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Range;
+	}();
+
+	Range.normal = 'range bg';
+	Range.hover = 'range fg';
+	Range.active = 'range active';
+	Range.label = 'range label';
+
+	exports.default = Range;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Builder = __webpack_require__(2);
+
+	var _Builder2 = _interopRequireDefault(_Builder);
+
+	var _Shapes = __webpack_require__(7);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Slider = function () {
+	  function Slider() {
+	    _classCallCheck(this, Slider);
+	  }
+
+	  _createClass(Slider, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+
+	      /* 1. configure default parameters first */
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? 0.5 : _theParams$value,
+	          _theParams$min = theParams.min,
+	          min = _theParams$min === undefined ? 0 : _theParams$min,
+	          _theParams$max = theParams.max,
+	          max = _theParams$max === undefined ? 1 : _theParams$max,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height;
+
+	      /* 2. create a new controller of type slider */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state for the slider */
+	      controller.setState(_Common2.default.merge({ value: value, min: min, max: max, width: width, height: height, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.wheel, { sliderDrag: { get: 'deltaY' } }).addEventFor(_Events2.default.mouseDown, { startDrag: { then: 'sliderDrag', get: 'movementX' }, sliderDown: {} }).addEventFor(_Events2.default.mouseEnter, { hover: { is: true } }).addEventFor(_Events2.default.mouseLeave, { hover: { is: false } }).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+
+	    /**
+	     * [build description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          label = theParams.label,
+	          min = theParams.min,
+	          max = theParams.max,
+	          value = theParams.value,
+	          hover = theParams.hover;
+
+	      var v0 = _Common2.default.constrainValue(value, min, max);
+	      var v1 = _Common2.default.mapValue(v0, min, max, 0, width);
+	      var v2 = v0.toFixed(2);
+	      var c0 = hover ? Slider.active : Slider.hover;
+	      var spacing = 4;
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: Slider.normal });
+	      (0, _Builder.updateElementFor)(theController, 'fg', _Shapes.createRect, { width: v1, height: height, class: c0 });
+	      (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + spacing, y: height / 2, 'text-anchor': 'start', class: Slider.label, text: label });
+	      (0, _Builder.updateElementFor)(theController, 'value', _Shapes.createLabel, { x: spacing, y: height / 2, 'text-anchor': 'start', class: Slider.label, text: v2 });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Slider;
+	}();
+
+	Slider.normal = 'slider bg';
+	Slider.hover = 'slider fg';
+	Slider.active = 'slider active';
+	Slider.label = 'slider label';
+	Slider.icon = 'slider icon';
+
+	exports.default = Slider;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var TextField = function () {
+	  function TextField() {
+	    _classCallCheck(this, TextField);
+	  }
+
+	  _createClass(TextField, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+	      /* set default parameters*/
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? 1 : _theParams$value,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 100 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height;
+	      /* create a Controller object */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+	      /* assign input specific events */
+	      var input = function input() {
+	        var div = controller.getElement('input').childNodes[0].childNodes[0]; /* FIXME: optimize */
+	        div.setAttribute('contenteditable', true);
+	        div.onkeypress = function (event) {
+	          if (event.charCode === 13) div.blur();console.log(div.innerHTML);
+	        };
+	        return div;
+	      };
+	      /* build the controller */
+	      controller.setState(_Common2.default.merge({ value: value, width: width, height: height, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.focus, { call: { fn: function fn() {
+	            input().focus();
+	          } } }).addEventFor(_Events2.default.mouseEnter, { hover: { is: true } }).addEventFor(_Events2.default.mouseLeave, { hover: { is: false } }).setParent(theBuilder.root()).build();
+	      /* after building is completed, return the controller */
+	      return controller;
+	    }
+
+	    /**
+	     * A controller is updated when changes are made
+	     * @param  {Controller} theController [description]
+	     * @param  {Object} theParams         [description]
+	     * @return Controller                 [description]
+	     */
+
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var width = theParams.width,
+	          height = theParams.height,
+	          text = theParams.label,
+	          hover = theParams.hover,
+	          _theParams$rx = theParams.rx,
+	          rx = _theParams$rx === undefined ? 0 : _theParams$rx,
+	          _theParams$ry = theParams.ry,
+	          ry = _theParams$ry === undefined ? 0 : _theParams$ry;
+
+	      var c0 = hover ? TextField.active : TextField.hover;
+	      (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: TextField.normal, rx: rx, ry: ry });
+	      (0, _Builder.updateElementFor)(theController, 'baseline', _Shapes.createRect, { width: width, height: 2, y: height - 2, class: c0, rx: rx, ry: ry });
+	      (0, _Builder.updateElementFor)(theController, 'input', _Shapes.createInput, { width: width, height: height, class: TextField.label });
+	      (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + 4, y: height / 2, textAnchor: 'start', alignmentBaseline: 'central', class: TextField.label, text: text });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return TextField;
+	}();
+
+	TextField.normal = 'textField bg';
+	TextField.hover = 'textField fg';
+	TextField.active = 'textField active';
+	TextField.label = 'textField label';
+
+	exports.default = TextField;
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	/* TODO */
+	"use strict";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Events = __webpack_require__(5);
+
+	var _Events2 = _interopRequireDefault(_Events);
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	var _Controller = __webpack_require__(4);
+
+	var _Controller2 = _interopRequireDefault(_Controller);
+
+	var _Shapes = __webpack_require__(7);
+
+	var _Builder = __webpack_require__(2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Toggle = function () {
+	  function Toggle() {
+	    _classCallCheck(this, Toggle);
+	  }
+
+	  _createClass(Toggle, null, [{
+	    key: 'create',
+
+
+	    /**
+	     * [create description]
+	     * @param  {[type]} theBuilder  [description]
+	     * @param  {[type]} theId       [description]
+	     * @param  {[type]} theParams   [description]
+	     * @return [type]               [description]
+	     */
+	    value: function create(theBuilder, theId, theParams) {
+
+	      /* 1. configure default parameters first */
+	      var _theParams$value = theParams.value,
+	          value = _theParams$value === undefined ? false : _theParams$value,
+	          _theParams$x = theParams.x,
+	          x = _theParams$x === undefined ? 0 : _theParams$x,
+	          _theParams$y = theParams.y,
+	          y = _theParams$y === undefined ? 0 : _theParams$y,
+	          _theParams$r = theParams.r,
+	          r = _theParams$r === undefined ? 0 : _theParams$r,
+	          _theParams$width = theParams.width,
+	          width = _theParams$width === undefined ? 20 : _theParams$width,
+	          _theParams$height = theParams.height,
+	          height = _theParams$height === undefined ? 20 : _theParams$height;
+
+	      /* 2. create a new controller of type slider */
+
+	      var controller = theBuilder.createControllerFor(theId, this.name);
+
+	      /* 3. now set the state for the slider */
+	      controller.setState(_Common2.default.merge({ value: value, width: width, height: height, x: x, y: y, r: r }, theParams)).addEventFor(_Events2.default.click, { call: { fn: function fn(e, c, p) {
+	            e.base().change(c.id, { value: !controller.getValue() });
+	          } } }).addEventFor(_Events2.default.focus, { call: { fn: function fn(e, c, p) {
+	            e.base().change(c.id, { focus: true });
+	          } } }).addEventFor(_Events2.default.blur, { call: { fn: function fn(e, c, p) {
+	            e.base().change(c.id, { focus: false });
+	          } } }).setParent(theBuilder.root()).build();
+
+	      /* 4. finally return the newly created controller */
+	      return controller;
+	    }
+
+	    /**
+	     * [build description]
+	     * @param  {[type]} theController [description]
+	     * @param  {[type]} theParams     [description]
+	     * @return [type]                 [description]
+	     */
+
+	  }, {
+	    key: 'update',
+	    value: function update(theController, theParams) {
+	      var value = theParams.value,
+	          width = theParams.width,
+	          height = theParams.height,
+	          _theParams$label = theParams.label,
+	          label = _theParams$label === undefined ? '' : _theParams$label,
+	          option = theParams.option,
+	          _theParams$rx = theParams.rx,
+	          rx = _theParams$rx === undefined ? 4 : _theParams$rx,
+	          _theParams$ry = theParams.ry,
+	          ry = _theParams$ry === undefined ? 4 : _theParams$ry,
+	          icon = theParams.icon;
+
+	      var isLabel = true;
+	      var c0 = value ? Toggle.active : Toggle.normal;
+	      switch (option) {
+	        case 'block':
+	          {
+	            (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: Toggle.normal });
+	            (0, _Builder.updateElementFor)(theController, 'fg', _Shapes.createRect, { x: value ? width / 2 : 0, width: width / 2, height: height, class: c0 });
+	            (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + 4, y: height / 2, class: Toggle.label, text: label });
+	          }
+	          break;
+	        case 'circular':
+	          {
+	            var n = 2;
+	            var r = height / 2;
+	            var _c = value ? Toggle.active : Toggle.hover;
+	            (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { rx: r, ry: r, width: width, height: height, class: Toggle.normal });
+	            (0, _Builder.updateElementFor)(theController, 'fg', _Shapes.createCircle, { r: r - n, cx: value ? width - r : r, cy: r, class: _c });
+	            (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + 4, y: height / 2, class: Toggle.label, text: label });
+	          }
+	          break;
+	        case 'icon':
+	          {
+	            isLabel = false;
+	            (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { rx: rx, ry: ry, width: width, height: height, class: c0 });
+	            (0, _Builder.updateElementFor)(theController, 'icon', _Shapes.createLabel, { x: width / 2, y: height / 2, textAnchor: 'middle', class: Toggle.icon, text: icon });
+	          }
+	          break;
+	        default:
+	          {
+	            (0, _Builder.updateElementFor)(theController, 'bg', _Shapes.createRect, { width: width, height: height, class: c0 });
+	          }
+	      }
+	      if (isLabel) (0, _Builder.updateElementFor)(theController, 'label', _Shapes.createLabel, { x: width + 4, y: height / 2, class: Toggle.label, text: label });
+	      (0, _Builder.updateElementFor)(theController, 'area', _Shapes.createRect, { width: width, height: height, class: _Controller2.default.area });
+	      return theController;
+	    }
+	  }]);
+
+	  return Toggle;
+	}();
+
+	Toggle.normal = 'toggle bg';
+	Toggle.hover = 'toggle fg';
+	Toggle.active = 'toggle active';
+	Toggle.label = 'toggle label';
+	Toggle.icon = 'toggle icon';
+
+	exports.default = Toggle;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Common = __webpack_require__(3);
+
+	var _Common2 = _interopRequireDefault(_Common);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	  * @classdesc
+	  */
+	var Observer = function () {
+
+	  /* https://developer.mozilla.org/en/docs/Web/API/MutationObserver */
+
+	  /**
+	    * @constructor
+	    */
+	  function Observer() {
+	    _classCallCheck(this, Observer);
+
+	    /* observer function */
+	    this.observer = new MutationObserver(function (mutations) {
+	      mutations.map(function (mutation) {
+	        console.log(">", mutation.attributeName);
+	        switch (mutation.attributeName) {
+	          case 'x':
+	            var x = _Common2.default.i(Math.random() * 100, 0);
+	            mutation.target.setAttribute('transform', 'translate(' + x + ', 0)');
+	            break;
+	        }
+	        return mutation;
+	      });
+	    });
+
+	    /* configuration of the observer */
+	    this.config = { attributes: true, childList: true, characterData: true };
+	  }
+
+	  _createClass(Observer, [{
+	    key: 'observe',
+	    value: function observe(theTarget) {
+	      this.observer.observe(theTarget, this.config);
+	    }
+	  }]);
+
+	  return Observer;
+	}();
+
+	exports.default = Observer;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	  * @classdesc
+	  */
+	var Styles =
+
+	/**
+	  * @constructor
+	  */
+
+	/* FIXME: careful! should only be called once.
+	 * otherwise each ControlPanel will add the style again.
+	 * maybe add to main.js? */
+	function Styles() {
+	  _classCallCheck(this, Styles);
+
+	  var fonts = ['libraries/assets/styles.css', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'];
+	  fonts.forEach(function (font) {
+	    var styles = document.createElement('link');
+	    styles.rel = 'stylesheet';
+	    styles.type = 'text/css';
+	    styles.media = 'screen';
+	    styles.href = font;
+	    document.getElementsByTagName('head')[0].appendChild(styles);
+	  });
+	};
+
+	exports.default = Styles;
+
+/***/ }
+/******/ ]);

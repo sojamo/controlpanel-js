@@ -1,33 +1,33 @@
 import Event                                     from '../Events.js'
 import Common                                    from '../Common.js'
 import Controller                                from '../Controller.js'
-import {createRect, createLabel, createCircle}   from '../Builder.js'
+import {createRect, createLabel, createCircle}   from '../Shapes.js'
 import {updateElementFor}                        from '../Builder.js'
 
 class Toggle {
 
   /**
    * [create description]
-   * @param  {[type]} theTemplate [description]
+   * @param  {[type]} theBuilder  [description]
    * @param  {[type]} theId       [description]
    * @param  {[type]} theParams   [description]
    * @return [type]               [description]
    */
-  static create(theTemplate, theId, theParams) {
+  static create(theBuilder, theId, theParams) {
 
     /* 1. configure default parameters first */
     const {value=false, x=0, y=0, r=0, width=20, height=20} = theParams;
 
     /* 2. create a new controller of type slider */
-    const controller = theTemplate.createControllerFor(theId, 'toggle');
+    const controller = theBuilder.createControllerFor(theId, this.name);
 
     /* 3. now set the state for the slider */
     controller
       .setState(Common.merge({value, width, height, x, y, r}, theParams))
-      .addEventFor(Event.click, {call: {fn: (e, c, p) => {c.change({value: !controller.getValue()})}}})
-      .addEventFor(Event.focus, {call: {fn: (e, c, p) => {c.change({focus: true})}}})
-      .addEventFor(Event.blur, {call: {fn: (e, c, p) => {c.change({focus: false})}}})
-      .setParent(theTemplate.root())
+      .addEventFor(Event.click, {call: {fn: (e, c, p) => {e.base().change(c.id, {value: !controller.getValue()})}}})
+      .addEventFor(Event.focus, {call: {fn: (e, c, p) => {e.base().change(c.id, {focus: true})}}})
+      .addEventFor(Event.blur, {call: {fn: (e, c, p) => {e.base().change(c.id, {focus: false})}}})
+      .setParent(theBuilder.root())
       .build();
 
     /* 4. finally return the newly created controller */

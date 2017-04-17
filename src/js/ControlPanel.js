@@ -4,10 +4,11 @@ import Builder                                            from './Builder.js'
 import Common                                             from './Common.js'
 import Event                                              from './Events.js'
 import Observer                                           from './Observer.js'
-import Templates                                          from './Templates.js'
 import Styles                                             from './Styles.js'
 import {addEventListener}                                 from './Events.js'
-import {setAttributesFor,createElement, createTriangle}   from './Builder.js'
+import {setAttributesFor,createElement}                   from './Builder.js'
+import {createTriangle}                                   from './Shapes.js'
+import * as controllers                                   from './controllers'
 
 /**
   * @classdesc
@@ -26,7 +27,6 @@ class ControlPanel {
     this.builder     = new Builder(this);
     this.observer    = new Observer(this);
     this.events      = new Event(this);
-    this.templates   = new Templates(this);
     this.controllers = {};
 
     /* define the root element */
@@ -37,9 +37,6 @@ class ControlPanel {
 
     /* setup controller-events */
     this.events.configure(root, this.name);
-
-    /* setup controller-templates */
-    this.templates.configure(root);
 
 
     /* The minimize/maximize Icon TODO: where should this go? */
@@ -69,7 +66,7 @@ class ControlPanel {
    */
   create(theId, theParams) {
     /* 1. create a new controller */
-    this.controllers[theId] = this.templates.create(theId, theParams);
+    this.controllers[theId] = this.builder.create(theId, theParams);
     /* 2. add observer */
     console.log('created controller:', this.controllers[theId], this.controllers);
     return this;
